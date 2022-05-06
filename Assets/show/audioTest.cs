@@ -5,23 +5,21 @@ using UnityEngine;
 public class audioTest : MonoBehaviour
 {
     [SerializeField]
-    private SoundManager soundManager; //ƒTƒEƒ“ƒhƒ}ƒl[ƒWƒƒ[
-
-    [SerializeField]
-    private AudioClip clip1; //‰¹Œ¹ƒf[ƒ^1
-
-    [SerializeField]
-    private AudioClip clip2; //‰¹Œ¹ƒf[ƒ^2
+    private SoundManager soundManager; //ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½ï¿½[
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) //¶ƒNƒŠƒbƒN
+        if (Input.GetMouseButtonDown(0)) //ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½bï¿½N
         {
-            soundManager.Play(clip1); //ƒTƒEƒ“ƒhƒ}ƒl[ƒWƒƒ[‚ğg—p‚µ‚ÄŒø‰Ê‰¹Ä¶
+            soundManager.Play("a"); //ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ê‰ï¿½ï¿½Äï¿½
         }
-        if (Input.GetMouseButtonDown(1)) //‰EƒNƒŠƒbƒN
+        if (Input.GetMouseButtonDown(1)) //ï¿½Eï¿½Nï¿½ï¿½ï¿½bï¿½N
         {
-            soundManager.Play(clip2); //ƒTƒEƒ“ƒhƒ}ƒl[ƒWƒƒ[‚ğg—p‚µ‚ÄŒø‰Ê‰¹Ä¶
+            soundManager.Play(""); //ï¿½Tï¿½Eï¿½ï¿½ï¿½hï¿½}ï¿½lï¿½[ï¿½Wï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ÄŒï¿½ï¿½Ê‰ï¿½ï¿½Äï¿½
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            soundManager.Play("C");
         }
     }
 }

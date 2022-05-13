@@ -8,22 +8,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField]
     private float playableDistance = 0.2f;
 
-    //BGM関連
-    [System.Serializable]
-    public class BGMData
-    {
-        public bool loop;
-        public float volume;
-        public AudioClip BGMClip;
-        public float playedTime;
-    }
-
-    [SerializeField]
-    private BGMData[] BGMDatas;
-
     //SE関連
     [System.Serializable]
-    public class SoundData
+    public class AudioData
     {
         public string name;
         public float volume;
@@ -32,7 +19,7 @@ public class SoundManager : MonoBehaviour
     }
 
     [SerializeField]
-    private SoundData[] soundDatas;
+    private AudioData[] audioDatas;
 
 #region SE
 
@@ -46,9 +33,9 @@ public class SoundManager : MonoBehaviour
             audioSourceList[i] = gameObject.AddComponent<AudioSource>();
         }
 
-        foreach (var soundData in soundDatas)
+        foreach (var audioData in audioDatas)
         {
-            soundDictionary.Add(soundData.name,soundData);
+            soundDictionary.Add(audioData.name,audioData);
         }
     }
     //使ってないオーディオソースを再利用する
@@ -61,7 +48,7 @@ public class SoundManager : MonoBehaviour
 
         return null;
     }
-
+   
     public void Play(AudioClip clip)
     {
         var audioSource = GetUnusedAudioSource();
@@ -69,16 +56,23 @@ public class SoundManager : MonoBehaviour
         audioSource.clip = clip;
         audioSource.Play();
     }
-    
-    private Dictionary<string, SoundData> soundDictionary = new Dictionary<string, SoundData>();
-
+    public bool loop;
+    private Dictionary<string, AudioData> soundDictionary = new Dictionary<string, AudioData>();
     public void Play(string name)
     {
-        if(soundDictionary.TryGetValue(name,out var soundData))//管理用Dictonaryから、別名で検索
+        
+        if(loop == true && soundDictionary.TryGetValue(name, out var soundData))
+        {
+            if (Time.realtimeSinceStartup - soundData.playedTime < playableDistance) return;
+            soundData.playedTime = Time.realtimeSinceStartup; //次回用に保持
+            Play(soundData.audioClip);//あったら再生
+        }
+
+        else if(soundDictionary.TryGetValue(name,out  soundData))//管理用Dictonaryから、別名で検索
         {
             if(Time.realtimeSinceStartup - soundData.playedTime < playableDistance) return;
             soundData.playedTime = Time.realtimeSinceStartup; //次回用に保持
-            Play(soundData.audioClip);//あったら再生
+            Play(soundData.audioClip);//あったら再生            
         }
         else
         {
@@ -87,7 +81,5 @@ public class SoundManager : MonoBehaviour
     }   
 #endregion 
 
-#region BGM
-    
-#endregion
+
 }

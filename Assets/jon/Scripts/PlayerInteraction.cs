@@ -18,17 +18,20 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle1"))
+        switch (other.gameObject.tag)
         {
-            Debug.Log("Sphere");
-        }
-        else if (other.gameObject.CompareTag("Obstacle2"))
-        {
-            Debug.Log("Cube");
-        }
-        else if (other.gameObject.CompareTag("Obstacle3"))
-        {
-            Debug.Log("Cylinder");
+            case ("Obstacle1"):
+                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+                break;
+            case ("Obstacle2"):
+                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+                break;
+            case ("Obstacle3"):
+                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+                break;
+            default:
+
+                break;
         }
     }
 

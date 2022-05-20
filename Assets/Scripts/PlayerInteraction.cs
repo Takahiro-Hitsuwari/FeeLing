@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public LevelLoader levelLoader;
-
+    PlayerStats playerStats;
     // Start is called before the first frame update
 
     int count = 0;
     void Start()
     {
-        
+        playerStats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(count == 4)
-        {
-            levelLoader.LoadNextLevel();
-        }
+      
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             case ("Obstacle1"):
                 Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
-                count++;
+                playerStats.playerStats.Hp -= 1;
                 break;
             case ("Obstacle2"):
                 Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);

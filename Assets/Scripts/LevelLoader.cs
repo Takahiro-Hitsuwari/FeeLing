@@ -6,17 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void LoadNextLevel()
     {
@@ -24,7 +14,7 @@ public class LevelLoader : MonoBehaviour
 
     }
 
-    public void EndGame()
+    public void PreviousGame()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
 

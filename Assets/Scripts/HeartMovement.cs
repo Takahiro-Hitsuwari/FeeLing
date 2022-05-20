@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class HeartMovement : MonoBehaviour
 {
-
+    PlayerStats playerStats;
     PlayerInput playerInput;
     CharacterController characterController;
 
@@ -26,6 +26,7 @@ public class HeartMovement : MonoBehaviour
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+        playerStats = GetComponent<PlayerStats>();
 
         // Set the player input callbacks
         playerInput.Player.Move.started += onMovementInput;
@@ -43,7 +44,7 @@ public class HeartMovement : MonoBehaviour
     {
         currentMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
 
-        characterController.Move(currentMovement * speed * Time.deltaTime);
+        characterController.Move(currentMovement * playerStats.playerStats.Speed * Time.deltaTime);
     }
 
         void Update()

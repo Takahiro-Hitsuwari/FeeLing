@@ -22,6 +22,7 @@ public class SpikeAttack : Attack
         {
             attack_model = (Instantiate(AttackPrefab, alert.transform.position, new Quaternion(0, 0, 0, 0)));
             attack_model.AddComponent<Autodestruction>().autodistructionTime = duration;
+            attack_model.transform.parent = parent.GetComponent<Attackholder>().map.transform;
             Destroy(alert);
         }
     }

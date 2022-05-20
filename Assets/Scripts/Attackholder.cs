@@ -12,6 +12,7 @@ public class Attackholder : MonoBehaviour
     [Range(0f, 10f)]
     public float Cooldown;
     private float timer;
+    public GameObject map;
 
     private void Start()
     {

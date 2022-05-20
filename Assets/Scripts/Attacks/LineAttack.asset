@@ -9,16 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aabffa42634be7f409df98d004c45523, type: 3}
-  m_Name: SpikeAttack
+  m_Script: {fileID: 11500000, guid: 9df8e5555f2de0944bca01e8b852cd46, type: 3}
+  m_Name: LineAttack
   m_EditorClassIdentifier: 
   timer: 0
   cooldownAlert: 2
-  duration: 3
-  name: "\u3068\u3052"
-  precision: 1
-  alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,
+  duration: 1
+  name: LineAttack
+  precision: 0.91
+  alertOutline: {fileID: 9071086277627545282, guid: dacf2e5ee137cf248920644f843b01bc,
     type: 3}
-  AttackPrefab: {fileID: 3455509993849962270, guid: 8da478c15d605244991baa140fafe5a9,
+  AttackPrefab: {fileID: 1180458306331589002, guid: 4c75b4a587b7d0a48915aebcd3e4d2c4,
     type: 3}
   state: 0

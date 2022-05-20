@@ -7,15 +7,13 @@ using UnityEngine;
 
 public enum State
 {
-    COOLDOWN,
-    ALERT,
-    INGAME
+    WAITING,
+    ALERT
 }
 public class Attack : ScriptableObject
 {
     [HideInInspector]
     public float timer;
-    public float cooldown;
     public float cooldownAlert;
     public float duration;
     public string name;

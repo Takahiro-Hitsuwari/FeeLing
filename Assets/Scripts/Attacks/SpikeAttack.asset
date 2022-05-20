@@ -16,7 +16,7 @@ MonoBehaviour:
   cooldownAlert: 2
   duration: 3
   name: "\u3068\u3052"
-  precision: 1
+  precision: 2.65
   alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,
     type: 3}
   AttackPrefab: {fileID: 3455509993849962270, guid: 8da478c15d605244991baa140fafe5a9,

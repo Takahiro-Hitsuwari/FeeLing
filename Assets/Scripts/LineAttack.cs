@@ -10,14 +10,19 @@ public class LineAttack : Attack
     public override void Alert(GameObject parent)
     {
         GameObject player = parent.GetComponent<Attackholder>().player;
-        alert = Instantiate(alertOutline, new Vector3(parent.transform.position.x,0,parent.transform.position.z), new Quaternion(0, 0, 0, 0));
+        alert = Instantiate(alertOutline,new Vector3(parent.gameObject.transform.position.x,
+            0,
+            parent.gameObject.transform.position.z),
+            parent.transform.rotation,
+            parent.transform);
+
     }
 
     public override void Activate(GameObject parent)
     {
         if (alert != null)
         {
-            attack_model = (Instantiate(AttackPrefab, alert.transform.position, new Quaternion(0, 0, 0, 0)));
+            attack_model = (Instantiate(AttackPrefab, alert.transform.position, parent.transform.rotation));
             attack_model.AddComponent<Autodestruction>().autodistructionTime = duration;
             Destroy(alert);
         }

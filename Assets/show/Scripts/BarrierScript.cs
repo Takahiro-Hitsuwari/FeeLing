@@ -1,30 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public class BarrierScript : MonoBehaviour
 {
-    /*
-    [SerializeField]
-    
-    public float velocity = 0.0f;
-    */
-    public GameObject barrier;
-    //テスト用*バリアが止まったら
-    //private bool isStop = false;
-    private bool isGameCleared = false;
-    //バリアカウント
-    public int barrierCount = 5;
-
-    //アルファ版用***
-     public GameObject gameClearObject = null;
-
-    Text gameClearText;
-
-
-
+    float timer;
+    int consecutive = 0;
+    public float interval;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,39 +16,24 @@ public class BarrierScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
-        
-            //テスト用**
+        timer = timer * Time.deltaTime;
 
-            // if (barrier.transform.localPosition.z < 12)
-            // {
-            //     barrier.transform.Translate(0, 0, velocity * Time.deltaTime);
-            // }
-            // else
-            // {
-            //     barrier.transform.position = barrier.transform.position;
-            //     isStop = true;
-            // }
-            //oで破壊
-
-            if (Gamepad.current.buttonEast.wasPressedThisFrame)
+        if(Keyboard.current[Key.Space].wasThisFrame && StageMovement.speed == 0)
+        {
+            if(timer < interval)
             {
-                barrierCount--;
-               gameClearText = gameClearObject.GetComponent<Text>();
+                consecutive++;
+                timer = 0;
             }
-
-            if (barrierCount == 0)
+            else
             {
-                Destroy(barrier.gameObject);
-                isGameCleared = true;
+                consecutive = 1;
+                timer = 0;
             }
-
-            if(isGameCleared == true)
-            {
-                gameClearText.text = "Stage Clear!!";
-            }
-
-        
+        }
+        if(consecutive == 10)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

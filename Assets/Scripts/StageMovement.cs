@@ -79,17 +79,7 @@ public class StageMovement : MonoBehaviour
                 {
                     if (speed > 0)
                     {
-                        speed -= 2f * Time.deltaTime;
-
-                        if (transform.position.z < startingPos + (sizeMesh))
-                        {
-                            if (speed < 20)
-                            {
-                                speed += 10f * Time.deltaTime;
-                            }
-                            if (Camera.main.transform.parent == null)
-                                Camera.main.transform.parent = stages[stages.Count - 1].gameObject.transform;
-                        }
+                        speed -= 4.2f * Time.deltaTime;
 
                     }
 

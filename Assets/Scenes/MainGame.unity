@@ -1489,7 +1489,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2678b9047ca722d4d91e874403731480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageTime: 10
+  stageTime: 20
   timer: 0
   timerText: {fileID: 587083720}
 --- !u!4 &1687166323

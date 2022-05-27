@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class BarrierScript : MonoBehaviour
 {
+    /*
     [SerializeField]
+    
     public float velocity = 0.0f;
+    */
     public GameObject barrier;
     //テスト用*バリアが止まったら
     //private bool isStop = false;
     private bool isGameCleared = false;
     //バリアカウント
     public int barrierCount = 5;
-    //バリアが存在するかどうかテスト用**
-    private bool isbarriered = true;
+
     //アルファ版用***
      public GameObject gameClearObject = null;
 
@@ -44,7 +47,7 @@ public class BarrierScript : MonoBehaviour
             //     isStop = true;
             // }
             //oで破壊
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 barrierCount--;
             }
@@ -52,7 +55,6 @@ public class BarrierScript : MonoBehaviour
             if (barrierCount == 0)
             {
                 Destroy(barrier.gameObject);
-                isbarriered = false;
                 isGameCleared = true;
             }
 

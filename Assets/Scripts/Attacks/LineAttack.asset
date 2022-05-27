@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LineAttack
   m_EditorClassIdentifier: 
   timer: 0
-  cooldownAlert: 2
-  duration: 1
+  cooldownAlert: 1
+  duration: 3
   name: LineAttack
-  precision: 0.91
+  precision: 0
   alertOutline: {fileID: 9071086277627545282, guid: dacf2e5ee137cf248920644f843b01bc,
     type: 3}
   AttackPrefab: {fileID: 1180458306331589002, guid: 4c75b4a587b7d0a48915aebcd3e4d2c4,

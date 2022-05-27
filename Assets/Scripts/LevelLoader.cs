@@ -20,6 +20,32 @@ public class LevelLoader : MonoBehaviour
 
     }
 
+    public void RetryScreen()
+    {
+        transition.SetTrigger("Start");
+    }
+
+    public void RetryLevel()
+    {
+        StartCoroutine(RetryLevelCo());
+    }
+
+    public void ExitGame()
+    {
+        StartCoroutine(ExitGameScreen());
+    }
+       
+    
+    
+    IEnumerator ExitGameScreen()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1f);
+
+        Application.Quit(); 
+    }
+
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
@@ -27,6 +53,14 @@ public class LevelLoader : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         SceneManager.LoadScene(levelIndex);
+    }
 
+    IEnumerator RetryLevelCo()
+    {
+        transition.SetTrigger("Start");
+
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

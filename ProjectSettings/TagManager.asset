@@ -5,10 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - wall
-  - leftWall
+  - proyectile
+  - enemy
+  - player
+  - enemyProyectile
+  - proyectileHitable
   - Obstacle1
-  - Obstacle2
-  - Obstacle3
+  - leftWall
+  - HealSkill
+  - gameClear
   layers:
   - Default
   - TransparentFX

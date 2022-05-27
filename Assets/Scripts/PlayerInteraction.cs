@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     PlayerStats playerStats;
-    // Start is called before the first frame update
 
-    int count = 0;
+    public LevelLoader levelLoader;
+    Animator animator;
+    bool invincible = false;
+    public float invicibilityTime = 2.5f;
+
+
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
       
@@ -21,22 +25,31 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        switch (other.gameObject.tag)
+        if (!invincible)
         {
-            case ("Obstacle1"):
-                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
-                playerStats.playerStats.Hp -= 1;
-                break;
-            case ("Obstacle2"):
-                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
-                break;
-            case ("Obstacle3"):
-                Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
-                break;
-            default:
+            switch (other.gameObject.tag)
+            {
+                case ("Obstacle1"):
+                    //Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+                    playerStats.DestroyBP();
+                    StartCoroutine(Invulnerability());
+                    break;
+                case ("gameClear"):
+                    levelLoader.LoadNextLevel();
+                    break;
+                default:
 
-                break;
+                    break;
+            }
         }
+    }
+
+    IEnumerator Invulnerability()
+    {
+        invincible = true;
+        animator.SetTrigger("hit");
+        yield return new WaitForSeconds(invicibilityTime);
+        invincible = false;
     }
 
     private void OnTriggerExit(Collider other)

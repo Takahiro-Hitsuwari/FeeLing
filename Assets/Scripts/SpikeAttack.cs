@@ -13,7 +13,7 @@ public class SpikeAttack : Attack
         alert = Instantiate(alertOutline, new Vector3(
         player.transform.position.x + Random.Range(-precision, precision),
         0,
-        player.transform.position.z + Random.Range(-precision, precision)), new Quaternion(0, 0, 0, 0));
+        parent.transform.position.z - Random.Range(20, 35)), new Quaternion(0, 0, 0, 0)) ;
     }
 
     public override void Activate(GameObject parent)
@@ -22,6 +22,7 @@ public class SpikeAttack : Attack
         {
             attack_model = (Instantiate(AttackPrefab, alert.transform.position, new Quaternion(0, 0, 0, 0)));
             attack_model.AddComponent<Autodestruction>().autodistructionTime = duration;
+            attack_model.transform.parent = parent.GetComponent<Attackholder>().map.transform;
             Destroy(alert);
         }
     }

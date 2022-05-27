@@ -21,8 +21,10 @@ public class BarrierScript : MonoBehaviour
     //アルファ版用***
      public GameObject gameClearObject = null;
 
-     
-    
+    Text gameClearText;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class BarrierScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Text gameClearText = gameClearObject.GetComponent<Text>();
+        
         
         
             //テスト用**
@@ -47,9 +49,11 @@ public class BarrierScript : MonoBehaviour
             //     isStop = true;
             // }
             //oで破壊
+
             if (Gamepad.current.buttonEast.wasPressedThisFrame)
             {
                 barrierCount--;
+               gameClearText = gameClearObject.GetComponent<Text>();
             }
 
             if (barrierCount == 0)

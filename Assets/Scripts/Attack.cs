@@ -21,7 +21,7 @@ public class Attack : ScriptableObject
     public float precision;
     public GameObject alertOutline;
     public GameObject AttackPrefab;
-
+    public bool showAlert;
 
 
     public State state;

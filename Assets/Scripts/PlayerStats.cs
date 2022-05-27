@@ -21,6 +21,9 @@ public class PlayerStats : MonoBehaviour
     public LevelLoader retryLevel;
     public Stats playerStats = new Stats();
     public GameObject[] bodyparts;
+    public ParticleSystem playerDeathEffect;
+
+
 
 
     void Update()
@@ -29,6 +32,7 @@ public class PlayerStats : MonoBehaviour
         {
             retryLevel.RetryScreen();
             transform.gameObject.SetActive(false);
+            playerDeathEffect.Play();
         }
     }
 

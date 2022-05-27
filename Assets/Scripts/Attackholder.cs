@@ -13,6 +13,7 @@ public class Attackholder : MonoBehaviour
     public float Cooldown;
     private float timer;
     public GameObject map;
+    public bool can_attack;
 
     private void Start()
     {
@@ -22,13 +23,20 @@ public class Attackholder : MonoBehaviour
         {
             a.timer = 0;
             a.state = State.WAITING;
+            if(!a.showAlert)
+            {
+                a.alertOutline.GetComponent<Renderer>().enabled = false;    
+            }
         }
     }
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= Cooldown)
-            Attack();
+        if (can_attack)
+        {
+            timer += Time.deltaTime;
+            if (timer >= Cooldown)
+                Attack();
+        }
         foreach(Attack a in attacks)
         {
             switch (a.state)

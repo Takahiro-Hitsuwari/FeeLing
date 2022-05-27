@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     PlayerStats playerStats;
+
+    public LevelLoader levelLoader;
     Animator animator;
     bool invincible = false;
     public float invicibilityTime = 2.5f;
@@ -31,6 +33,9 @@ public class PlayerInteraction : MonoBehaviour
                     //Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
                     playerStats.DestroyBP();
                     StartCoroutine(Invulnerability());
+                    break;
+                case ("gameClear"):
+                    levelLoader.LoadNextLevel();
                     break;
                 default:
 

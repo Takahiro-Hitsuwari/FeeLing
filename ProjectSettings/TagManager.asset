@@ -14,6 +14,7 @@ TagManager:
   - leftWall
   - HealSkill
   - gameClear
+  - barrier
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(ExitGameScreen());
     }
        
+    public void LoadSpecificScene(int num)
+    {
+        StartCoroutine(LoadLevel(num));
+    }
+    
     
     
     IEnumerator ExitGameScreen()

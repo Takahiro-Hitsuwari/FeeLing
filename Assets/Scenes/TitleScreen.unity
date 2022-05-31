@@ -2400,6 +2400,7 @@ MonoBehaviour:
   timemanager: {fileID: 0}
   enemy: {fileID: 0}
   infiniteMove: 1
+  stopingSpeed: 0
 --- !u!1001 &1880462619
 PrefabInstance:
   m_ObjectHideFlags: 0

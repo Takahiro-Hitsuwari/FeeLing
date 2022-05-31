@@ -16,6 +16,7 @@ public class StageMovement : MonoBehaviour
     private bool gameover = false;
     public GameObject enemy;
     public bool infiniteMove;
+    public float stopingSpeed;
 
 
     private void InstantiateStage(GameObject stage_pref, ref float startPos)
@@ -79,7 +80,7 @@ public class StageMovement : MonoBehaviour
                 {
                     if (speed > 0)
                     {
-                        speed -= 4.2f * Time.deltaTime;
+                        speed -=stopingSpeed * Time.deltaTime;
 
                     }
 

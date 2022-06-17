@@ -5,8 +5,7 @@ using TMPro;
 
 public class ProgressText : MonoBehaviour
 {
-    [SerializeField]
-    int clearedStage = 0; //クリアしたステージのカウント
+    public int clearedStage = 0; //クリアしたステージのカウント
     TextMeshProUGUI progressText;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +46,7 @@ public class ProgressText : MonoBehaviour
     //(5まで増えたらリセット)
     public void ClearedStageCount()
     {
-        if(clearedStage == 5)
+        if (clearedStage == 5)
         {
             clearedStage = 0;
         }

@@ -1923,6 +1923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelLoader: {fileID: 0}
+  invincible: 0
   invicibilityTime: 2.5
   hitparticle: {fileID: 927476046}
 --- !u!95 &1467255857
@@ -1981,6 +1982,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1b24c9eb12452a42959680b32434daa, type: 2}
   - {fileID: 11400000, guid: 9eac85ddb47a53347bcdc7186e3f3a21, type: 2}
   - {fileID: 11400000, guid: 83b4b5d01a62b274cacc12c05d76cbdb, type: 2}
+  - {fileID: 11400000, guid: f0352632cfa17654781f5281c03ec0ca, type: 2}
   canUseSkills: 1
 --- !u!135 &1467255860
 SphereCollider:
@@ -13199,7 +13201,7 @@ GameObject:
   - component: {fileID: 4921018329354123598}
   m_Layer: 0
   m_Name: Image (1)
-  m_TagString: Untagged
+  m_TagString: invincibleSkill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

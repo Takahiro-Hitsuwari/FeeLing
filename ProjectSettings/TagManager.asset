@@ -18,6 +18,7 @@ TagManager:
   - Impulse
   - stage
   - SlowSkill
+  - invincibleSkill
   layers:
   - Default
   - TransparentFX

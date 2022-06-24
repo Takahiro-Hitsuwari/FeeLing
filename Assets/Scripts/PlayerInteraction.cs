@@ -8,7 +8,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public LevelLoader levelLoader;
     Animator animator;
-    bool invincible = false;
+    public bool invincible = false;
     public float invicibilityTime = 2.5f;
     public ParticleSystem hitparticle;
 

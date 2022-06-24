@@ -16,14 +16,14 @@ public class SkillHolder : MonoBehaviour
     }
 
     public Skill [] skills;
-    PlayerInput playerInput;
+    PlayerInteraction playerinter;
     pressedButton pressButton = pressedButton.NULL;
     private Skill activatedSkill;
     public bool canUseSkills = true;
 
     private void Awake()
     {
-        playerInput = new PlayerInput();
+        playerinter = GetComponent<PlayerInteraction>();
 
     }
 

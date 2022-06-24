@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabffa42634be7f409df98d004c45523, type: 3}
+  m_Name: IbaraAttack
+  m_EditorClassIdentifier: 
+  durationAlert: 0.5
+  duration: 3
+  name: "\u8328"
+  precision: 1.5
+  alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,
+    type: 3}
+  AttackPrefab: {fileID: 5183684307403082284, guid: 3f47b8c490cab3f47a2d116929a78589,
+    type: 3}
+  showAlert: 1

@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
+    public MusicManagerScript audiomanager;
 
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
@@ -54,10 +58,20 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadLevel(int levelIndex)
     {
         transition.SetTrigger("Start");
-
         yield return new WaitForSeconds(1f);
-
         SceneManager.LoadScene(levelIndex);
+        yield return new WaitForSeconds(0.1f); //checking right away would still return the old scene 
+        audiomanager.stopAudio();
+        
+        switch (SceneManager.GetActiveScene().name)
+        {
+
+            case ("MainGame"):
+                audiomanager.playAudio(audiomanager.joybgm);
+                break;
+
+        }
+        transition.SetTrigger("End");
     }
 
     IEnumerator RetryLevelCo()

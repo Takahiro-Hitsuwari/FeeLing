@@ -15,6 +15,9 @@ TagManager:
   - HealSkill
   - gameClear
   - barrier
+  - Impulse
+  - stage
+  - SlowSkill
   layers:
   - Default
   - TransparentFX

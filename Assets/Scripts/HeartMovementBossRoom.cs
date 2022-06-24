@@ -12,7 +12,7 @@ public class HeartMovementBossRoom : MonoBehaviour
     public Transform playerCamera;
 
     // Variable to store player input values
-    bool isMovementPressed;
+    bool isMovementPressed = false;
 
     // Variable to store player input values
     Vector2 currentMovementInput;
@@ -24,6 +24,8 @@ public class HeartMovementBossRoom : MonoBehaviour
     public float rotationSpeed = 15f;
     public bool canMove = true;
     float mDesiredRotation = 0f;
+
+    public Animator anim;
 
 
     private void Awake()
@@ -60,9 +62,22 @@ public class HeartMovementBossRoom : MonoBehaviour
         transform.rotation = Quaternion.Lerp(currentRotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
+    void HandleAnimation()
+    {
+        if(isMovementPressed)
+        {
+            anim.SetBool("isRun", true);
+        }
+        else
+        {
+            anim.SetBool("isRun", false);
+        }
+    }
+
     void Update()
     {
         handleMovement();
+        HandleAnimation();
     }
 
     void OnEnable()

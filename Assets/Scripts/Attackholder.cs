@@ -1,68 +1,141 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-
-
 
 public class Attackholder : MonoBehaviour
 {
-    public Attack[] attacks;
+    [System.Serializable]
+    public enum AttackType
+    {
+        喜_茨,
+        喜_花吹雪,
+        喜_とげ,
+        怒_ファイヤーウェーブ,
+        怒_メテオ,
+        怒_火柱,
+        怒_地獄,
+        哀_スケート,
+        哀_ブリザード,
+        哀_クリスタル,
+        哀_クリスタルアーチ,
+        楽_ピアノ,
+        楽_荒ぶる音楽隊,
+        楽_音符,
+        楽_
+
+    }
+
+    [System.Serializable]
+    public class kougeki
+    {
+        public AttackType type { get; set; }
+        public float time { get; set; }
+        public bool active { get; set; }
+        public Attack attack { get; set; }
+        public bool over { get; set; }
+        public float alertTimer { get; set; }
+        public GameObject alert { get; set; }
+
+    }
+
+    public List<Attack> defaultAttacks;
     public GameObject player;
-    private bool isAttacking;
-    [Range(0f, 10f)]
-    public float Cooldown;
     private float timer;
     public GameObject map;
     public bool can_attack;
-
+    [HideInInspector] 
+    public List<kougeki> attackList = new List<kougeki>();
     private void Start()
     {
-        timer = 0;
-        isAttacking = false;
-        foreach (Attack a in attacks)
+        LoadInspectorData();
+        foreach(kougeki k in attackList)
         {
-            a.timer = 0;
-            a.state = State.WAITING;
-            if(!a.showAlert)
-            {
-                a.alertOutline.GetComponent<Renderer>().enabled = false;    
-            }
+            k.alertTimer = 0;
         }
+
     }
     void Update()
     {
-        if (can_attack)
-        {
-            timer += Time.deltaTime;
-            if (timer >= Cooldown)
-                Attack();
-        }
-        foreach(Attack a in attacks)
-        {
-            switch (a.state)
-            {
-                case State.ALERT:
-                    if (a.timer < a.cooldownAlert)
-                        a.timer += Time.deltaTime;
-                    else
-                    {
-                        a.timer = 0;
-                        a.state = State.ALERT;
-                        a.Activate(gameObject);
-                        a.state = State.WAITING;
-                    }
-                    break;
+        timer += Time.deltaTime;
 
+        foreach (kougeki k in attackList)
+        {
+            if (k.attack != null)
+            {
+                if (timer >= k.time && !k.active)
+                {
+                    k.active = true;
+                    k.attack.Alert(this.gameObject,k);
+                }
+            }
+        }
+
+        foreach (kougeki k in attackList)
+        {
+            if(k.active)
+            {
+                if (k.attack != null)
+                {
+                    k.alertTimer += Time.deltaTime;
+                    if (k.alertTimer >= k.attack.durationAlert && !k.over)
+                    {
+                        k.over = true;
+                        k.alertTimer = 0;
+                        k.attack.Activate(this.gameObject,k);
+                    }
+                }
             }
         }
     }
 
-    public void Attack()
+    public void AssignAttack(kougeki k)
     {
-        timer = 0;
-        Attack a = attacks[Random.Range(0, attacks.Length)];
-        a.state = State.ALERT;
-        a.Alert(gameObject);
-
+        switch (k.type)
+        {
+            case (Attackholder.AttackType.喜_とげ):
+                k.attack = defaultAttacks[0];
+                break;
+            case (Attackholder.AttackType.喜_茨):
+                k.attack = defaultAttacks[1];
+                break;
+            case (Attackholder.AttackType.喜_花吹雪):
+                k.attack = defaultAttacks[2];
+                break;
+        }
     }
+
+    public void LoadInspectorData()
+    {
+        int i = 0;
+        string xtype = PlayerPrefs.GetString("type_" + i);
+
+        while (xtype != null && xtype != "")
+        {
+            xtype = PlayerPrefs.GetString("type_" + i);
+            foreach (AttackType a in (AttackType[])Enum.GetValues(typeof(AttackType)))
+            {
+                if(xtype == a.ToString())
+                {
+                    if (attackList.Count <= i)
+                        attackList.Add(new kougeki());
+
+                    attackList[i].type = a;
+                    attackList[i].time = PlayerPrefs.GetFloat("time_" + i);
+                    AssignAttack(attackList[i]);
+                    break;
+                }
+
+            }
+          
+            i++;
+        }
+
+        while (attackList.Count > i)
+        {
+            attackList.Remove(attackList[i]);
+        }
+    }
+
 }

@@ -12,13 +12,13 @@ public class BarrierScript : MonoBehaviour
     StageMovement stageSpeed;
     public Sprite circleSprite;
     private Image pressGameObject;
-    private LevelLoader levelLoader;
+    //private LevelLoader levelLoader;
 
     void Start()
     {
         stageSpeed = GameObject.Find("MapParent").GetComponent<StageMovement>();    
         pressGameObject = GameObject.Find("pressImage").GetComponent<Image>();
-        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        //levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
     void Update()
@@ -52,7 +52,7 @@ public class BarrierScript : MonoBehaviour
             //barriar‚ğÁ‚·ˆ—‚ğ‚±‚±‚É
             pressGameObject.enabled = false;
 
-            levelLoader.LoadSpecificScene(0);
+            //levelLoader.LoadSpecificScene(2);
 
             Destroy(this.gameObject);//Test
         }

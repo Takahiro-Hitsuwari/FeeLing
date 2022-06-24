@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: HealSkill
   m_EditorClassIdentifier: 
   cooldownTime: 10
-  cooldown: 10
+  cooldown: 2.0419981
   name: 'Heal '
   duration: 0
   duration_cooldown: 0
   active: 0
   tag: HealSkill
+  is_instant: 1
+  button: 1

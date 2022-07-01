@@ -8,8 +8,9 @@ public class PlayerInteraction : MonoBehaviour
 
     public LevelLoader levelLoader;
     Animator animator;
-    bool invincible = false;
+    public bool invincible = false;
     public float invicibilityTime = 2.5f;
+    public ParticleSystem hitparticle;
 
 
     void Start()
@@ -18,10 +19,6 @@ public class PlayerInteraction : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
-      
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
                 case ("Obstacle1"):
                     //Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
                     playerStats.DestroyBP();
+                    hitparticle.Play();
                     StartCoroutine(Invulnerability());
                     break;
                 case ("gameClear"):
@@ -52,8 +50,4 @@ public class PlayerInteraction : MonoBehaviour
         invincible = false;
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        
-    }
 }

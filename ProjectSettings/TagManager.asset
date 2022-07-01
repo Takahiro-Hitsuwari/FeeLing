@@ -14,6 +14,11 @@ TagManager:
   - leftWall
   - HealSkill
   - gameClear
+  - barrier
+  - Impulse
+  - stage
+  - SlowSkill
+  - invincibleSkill
   layers:
   - Default
   - TransparentFX

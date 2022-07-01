@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class StageMovement : MonoBehaviour
 {
@@ -14,36 +14,57 @@ public class StageMovement : MonoBehaviour
     float sizeMesh;
     public float speed;
     public TimerStage timemanager;
-    private bool gameover = false;
+    private bool slowingDown = false;
     public GameObject enemy;
     public bool infiniteMove;
+    public float stopingSpeed;
+    private float sizeWholeMap = 0;
+    public int N_ofmaps;
+    public Image ProgressImage;
+    private float progressImageSize;
+    public GameObject heartImage;
+    private float heartStartPos;
+    public GameObject Player;
+    private float startingSpeed;
 
 
     private void InstantiateStage(GameObject stage_pref, ref float startPos)
     {
         GameObject g = Instantiate(stage_pref, new Vector3(0, 0, -startPos), new Quaternion(0, 0, 0, 0), stageContainer.transform);
         g.transform.localPosition = new Vector3(0, 0, -startPos);
-        startPos -= sizeMesh;    
-        stages.Add(g);
-        if(stages.Count > 4)
+        startPos -= sizeMesh;
+       
+       
+        if (infiniteMove)
         {
-            Destroy(stages[0].gameObject);
-            stages.RemoveAt(0);
-        }    
+            stages.Add(g);
+            if (stages.Count > 4)
+            {
+                Destroy(stages[0].gameObject);
+                stages.RemoveAt(0);
+            }
+        }
     }
 
     void Start()
     {
+        startingSpeed = speed;
         sizeMesh = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>().bounds.size.z;
         startingPos = -sizeMesh;
+        progressImageSize = ProgressImage.GetComponent<RectTransform>().rect.width;
+        heartStartPos = heartImage.transform.localPosition.x;
 
-        //Instantiate the first 3 floor
-        for (int i = 0; i < 3; i++)
+        //Instantiate x floor
+        for (int i = 0; i < N_ofmaps -1; i++)
         {
             InstantiateStage(stagePrefab, ref startingPos);
-        }
-    }
+            sizeWholeMap += sizeMesh;
 
+        }
+        sizeWholeMap += sizeMesh;
+        InstantiateStage(stagedoor, ref startingPos);
+
+    }
 
     void Update()
     {
@@ -59,36 +80,35 @@ public class StageMovement : MonoBehaviour
         else
         {
             stage.transform.Translate(Vector3.back * speed * Time.deltaTime);
-            if (!gameover)
+
+            //progressMap
+            ProgressImage.fillAmount = (stage.transform.position.z / (-sizeWholeMap - sizeMesh + 5f));
+
+
+            float relativePos = (progressImageSize - 10) * ProgressImage.fillAmount;
+            heartImage.transform.localPosition =new Vector3(heartStartPos + relativePos, heartImage.transform.localPosition.y, heartImage.transform.localPosition.z);
+           
+
+            if(stage.transform.position.z < -sizeWholeMap)
             {
-                if (transform.position.z < startingPos + (sizeMesh * 3))
+                if (!slowingDown)
                 {
-                    if (timemanager.timer < timemanager.stageTime)
-                        InstantiateStage(stagePrefab, ref startingPos);
-                    else
-                    {
-                        gameover = true;
-                        InstantiateStage(stagedoor, ref startingPos);
-                        enemy.GetComponent<Attackholder>().can_attack = false;
-                    }
+                    if (speed != startingSpeed)
+                        speed = startingSpeed;
+
+                    Player.GetComponent<SkillHolder>().canUseSkills = false;
+                    enemy.GetComponent<Attackholder>().can_attack = false;
+                    slowingDown = true;
                 }
-
-            }
-            else
-            {
-                if (transform.position.z < startingPos + (sizeMesh * 2))
+                else if (speed > 0)
                 {
-                    if (speed > 0)
-                    {
-                        speed -= 4.2f * Time.deltaTime;
-
-                    }
+                    speed -= stopingSpeed * Time.deltaTime;
 
                 }
             }
-        }
-        
-     
-    }
+        }    
+
+     }
 
 }
+

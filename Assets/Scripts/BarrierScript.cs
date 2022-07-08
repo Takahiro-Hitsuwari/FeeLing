@@ -7,15 +7,18 @@ using UnityEngine.UI;
 public class BarrierScript : MonoBehaviour
 {
     float timer;
-    int consecutive = 0;
+    int consecutive = 1;
     public float interval;
     StageMovement stageSpeed;
     public Sprite circleSprite;
     private Image pressGameObject;
+    private GameObject barrier;
+    private bool decreasing;
     //private LevelLoader levelLoader;
 
     void Start()
     {
+        barrier = GameObject.Find("PlayerBarrier");
         stageSpeed = GameObject.Find("MapParent").GetComponent<StageMovement>();    
         pressGameObject = GameObject.Find("pressImage").GetComponent<Image>();
         //levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
@@ -32,20 +35,24 @@ public class BarrierScript : MonoBehaviour
                 pressGameObject.enabled = true;
                 pressGameObject.sprite = circleSprite;
             }
-                
-            if (Gamepad.current.buttonEast.wasPressedThisFrame)
+            if (timer < interval)
             {
-                if (timer < interval)
+                if (Gamepad.current.buttonEast.wasPressedThisFrame)
                 {
                     consecutive++;
+                    decreasing = false;
+                    StartCoroutine(PlayerBarrierIncrease(0.5f));
                     timer = 0;
-                }
-                else
-                {
-                    consecutive = 1;
-                    timer = 0;
-                }
+                }   
             }
+            else
+            {
+                consecutive = 1;
+                if(!decreasing)
+                StartCoroutine(PlayerBarrierDecrease());
+                timer = 0;
+            }
+           
         }
         if(consecutive == 10)
         {
@@ -56,5 +63,31 @@ public class BarrierScript : MonoBehaviour
 
             Destroy(this.gameObject);//Test
         }
+        IEnumerator PlayerBarrierIncrease(float increment)
+        {
+            float startings = barrier.transform.localScale.x;
+            while (barrier.transform.localScale.x < startings + increment)
+            {
+                if (decreasing)
+                    break;
+                barrier.transform.localScale = Vector3.Lerp(barrier.transform.localScale, barrier.transform.localScale + new Vector3(increment, increment, increment), 2.5f * Time.deltaTime);
+                yield return 0;
+            }
+        
+        }
+
+        IEnumerator PlayerBarrierDecrease()
+        {
+            decreasing = true;
+            while (barrier.transform.localScale.x > 0.001f)
+            {
+                if (!decreasing)
+                    break;
+                barrier.transform.localScale = Vector3.Lerp(barrier.transform.localScale, Vector3.zero, 5f * Time.deltaTime);
+                yield return 0;
+            }
+
+        }
+
     }
 }

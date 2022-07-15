@@ -1,0 +1,63 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+
+public class HeartBossInteraction : MonoBehaviour
+{
+    [SerializeField]
+    private Button button;
+    [SerializeField]
+    private Button continueButton;
+    [SerializeField]
+    private Animator fadeOutAnim;
+    
+    public DialogueTrigger dialogeTrigg;
+    public DialogueManager dialogeManag;
+
+    public void Conversation(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if (button.gameObject.activeSelf)
+            {
+                dialogeTrigg.TriggerDialogue();
+            }
+            else if (continueButton.gameObject.activeSelf && !button.gameObject.activeSelf)
+            {
+                dialogeManag.DisplayNextSentence();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "boss")
+        {
+            button.gameObject.SetActive(true);
+        }
+        else if(other.gameObject.tag == "bossDoor")
+        {
+            StartCoroutine(ToNextLevel());
+        }
+    }
+
+    IEnumerator ToNextLevel()
+    {
+        fadeOutAnim.SetTrigger("in");
+
+        yield return new WaitForSeconds(3f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "boss")
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+}

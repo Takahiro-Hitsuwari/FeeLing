@@ -96,7 +96,7 @@ public class StageMovement : MonoBehaviour
                     if (speed != startingSpeed)
                         speed = startingSpeed;
 
-                    Player.GetComponent<SkillHolder>().canUseSkills = false;
+                    //Player.GetComponent<SkillHolder>().canUseSkills = false;
                     enemy.GetComponent<Attackholder>().can_attack = false;
                     slowingDown = true;
                 }

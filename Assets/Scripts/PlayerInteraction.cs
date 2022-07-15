@@ -6,15 +6,17 @@ public class PlayerInteraction : MonoBehaviour
 {
     PlayerStats playerStats;
 
-    public LevelLoader levelLoader;
+    private  LevelLoader levelLoader;
     Animator animator;
     public bool invincible = false;
     public float invicibilityTime = 2.5f;
     public ParticleSystem hitparticle;
+    public CameraShake shakeCamera;
 
 
     void Start()
     {
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
         playerStats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
     }
@@ -25,11 +27,13 @@ public class PlayerInteraction : MonoBehaviour
         if (!invincible)
         {
             switch (other.gameObject.tag)
-            {
+            { 
                 case ("Obstacle1"):
                     //Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
+                    shakeCamera.Shake(0.50f, 0.2f);
                     playerStats.DestroyBP();
                     hitparticle.Play();
+
                     StartCoroutine(Invulnerability());
                     break;
                 case ("gameClear"):

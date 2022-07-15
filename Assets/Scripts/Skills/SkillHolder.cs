@@ -20,12 +20,21 @@ public class SkillHolder : MonoBehaviour
     pressedButton pressButton = pressedButton.NULL;
     private Skill activatedSkill;
     public bool canUseSkills = true;
-
+    public Sprite[] SkillUiSprites;
     private void Awake()
     {
         playerinter = GetComponent<PlayerInteraction>();
 
     }
+    private void Start()
+    {
+        foreach(Skill skill in skills)
+        {
+            skill.cooldown = skill.cooldownTime;
+            skill.active = false;
+        }
+    }
+
 
     public void Skill1Button(InputAction.CallbackContext context)
     {
@@ -53,21 +62,28 @@ public class SkillHolder : MonoBehaviour
         if (!canUseSkills)
             return;
 
+
+
      foreach (Skill s in skills)
         {
             GameObject img = GameObject.FindGameObjectWithTag(s.tag);
+            if (img == null)
+                return;
 
-            if(s.active)
+            if (s.active)
             {
                 if(s.duration < s.duration_cooldown)
                 {
                     s.duration += Time.deltaTime;
                 }
-                else
+                else if(s.active)
                 {
                     s.Deactivate(this.gameObject);
                     s.active = false;
                     s.duration = 0;
+                    if (img.GetComponent<Image>().sprite != SkillUiSprites[0])
+                        img.GetComponent<Image>().sprite = SkillUiSprites[0];
+
                     if (activatedSkill != null)
                     {
                         activatedSkill.active = false;
@@ -76,10 +92,11 @@ public class SkillHolder : MonoBehaviour
                     }
                 }
             }
-            else if (s.cooldown < s.cooldownTime)
+            else if (s.cooldown < s.cooldownTime && !s.active)
             {
                 s.cooldown += Time.deltaTime;
-                img.GetComponent<Image>().fillAmount = s.cooldown / s.cooldownTime;
+                if (img.GetComponent<Image>().sprite != SkillUiSprites[1])
+                    img.GetComponent<Image>().sprite = SkillUiSprites[1];
 
                 if (s.cooldown > s.cooldownTime)
                     s.cooldown = s.cooldownTime;
@@ -88,6 +105,11 @@ public class SkillHolder : MonoBehaviour
             else if(s.button.ToString() == pressButton.ToString() && s.button != Skill.Button.NULL)
             {
                 activatedSkill = s;
+            }
+            else
+            {
+                if (img.GetComponent<Image>().sprite != SkillUiSprites[0])
+                    img.GetComponent<Image>().sprite = SkillUiSprites[0];
             }
 
             if (activatedSkill != null && !activatedSkill.active)
@@ -98,14 +120,17 @@ public class SkillHolder : MonoBehaviour
                 activatedSkill.cooldown = 0;
                 pressButton = pressedButton.NULL;
 
+                img.GetComponent<Image>().sprite = SkillUiSprites[1];
                 if (activatedSkill.is_instant)
                 {
                     activatedSkill.Deactivate(this.gameObject);
                     activatedSkill.active = false;
+                    activatedSkill = null;
                     activatedSkill = null;
                 }
                
             }
         }
     }
+
 }

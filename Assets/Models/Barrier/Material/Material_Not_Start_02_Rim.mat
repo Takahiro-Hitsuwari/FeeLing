@@ -13,7 +13,7 @@ Material:
     _EMISSION_COLOR_COLOR _EMISSION_MAP_MODE_2D _TINT_AREA_ALL _TINT_COLOR_ENABLED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3001
   stringTagMap:
     RenderType: Transparent
@@ -153,7 +153,7 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _ColorCorrectionMode: 0
-    - _Cull: 2
+    - _Cull: 0
     - _Cutoff: 0.5
     - _DepthFadeEnabled: 0
     - _DepthFadeFar: 10

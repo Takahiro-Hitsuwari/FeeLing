@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Stats
 {
@@ -17,25 +19,33 @@ public class Stats
 
 public class PlayerStats : MonoBehaviour
 {
-    public LevelLoader levelLoader;
-    public LevelLoader retryLevel;
+    private LevelLoader levelLoader;
     public Stats playerStats = new Stats();
     public GameObject[] bodyparts;
     public ParticleSystem playerDeathEffect;
+    public EventSystem evsys;
 
 
-
+    private void Start()
+    {
+      
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+    }
 
     void Update()
     {
         if(playerStats.Hp == 0)
         {
-            retryLevel.RetryScreen();
+            levelLoader.RetryScreen();
             transform.gameObject.SetActive(false);
             playerDeathEffect.Play();
+            //StartCoroutine(Getbutton());
+            
+
         }
     }
 
+    
     public void DestroyBP()
     {
         bodyparts[playerStats.Maxhp - playerStats.Hp].gameObject.SetActive(false);
@@ -47,4 +57,13 @@ public class PlayerStats : MonoBehaviour
         playerStats.Hp++;
         bodyparts[playerStats.Maxhp - playerStats.Hp].gameObject.SetActive(true);   
     }
+
+    //IEnumerator Getbutton()
+    //{
+    //    yield return new WaitForSeconds(1f);
+
+    //    GameObject butono = GameObject.Find("RetryButton");
+    //    evsys.SetSelectedGameObject(butono);
+
+    //}
 }

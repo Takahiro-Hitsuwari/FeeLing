@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3500565436282413967}
-  - component: {fileID: 3500565436282413968}
+  - component: {fileID: 1712362077}
   m_Layer: 0
   m_Name: LevelLoader
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3500565436282413968
+--- !u!114 &1712362077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,10 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3500565436282413966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc7140e0117c9b84fbc5639b9d8eb620, type: 3}
+  m_Script: {fileID: 11500000, guid: 409fe84396952fa43bfecce5971cbedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 3500565436955070811}
+  audiomanager: {fileID: 0}
 --- !u!1 &3500565436955070809
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +159,7 @@ Animator:
   m_GameObject: {fileID: 3500565436955070809}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11005f29df2b6c0408889310c2f25868, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3c34b45d178f8fa4284730573ca82eb9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

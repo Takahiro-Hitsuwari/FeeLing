@@ -13,10 +13,15 @@ public class HeartBossInteraction : MonoBehaviour
     private Button continueButton;
     [SerializeField]
     private Animator fadeOutAnim;
+    private LevelLoader levelLoader;
     
     public DialogueTrigger dialogeTrigg;
     public DialogueManager dialogeManag;
 
+    private void Start()
+    {
+        levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();   
+    }
     public void Conversation(InputAction.CallbackContext context)
     {
         if(context.performed)
@@ -40,7 +45,7 @@ public class HeartBossInteraction : MonoBehaviour
         }
         else if(other.gameObject.tag == "bossDoor")
         {
-            StartCoroutine(ToNextLevel());
+            levelLoader.LoadNextLevel();
         }
     }
 

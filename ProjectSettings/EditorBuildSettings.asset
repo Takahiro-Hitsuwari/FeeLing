@@ -6,11 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
-    guid: 0b4b32e7befbaa34e8f31f87bda06f71
+    path: Assets/Scenes/NewTitle.unity
+    guid: 01b5635e19977a54a952afd06641b912
   - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: d7fe63757e05b0b46b9977fb4aca4e4e
+  - enabled: 1
+    path: Assets/Scenes/BossRoom.unity
+    guid: 919cf83490d10fa44a1db6d00e586ca4
+  - enabled: 1
+    path: Assets/Scenes/MainGame2.unity
+    guid: 6088414d5ffadf24b92935b1403becff
+  - enabled: 1
+    path: Assets/Scenes/RakuBoss.unity
+    guid: 5853254d19bc2be4abf6e02e75a35c2a
   - enabled: 1
     path: Assets/Scenes/GameClear.unity
     guid: 39c21091b1b58df41a59e77ee8816644

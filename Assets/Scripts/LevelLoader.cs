@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
-    public MusicManagerScript audiomanager;
-
+    public Animator retryAnimation;
+    private  MusicManagerScript audiomanager;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        audiomanager = GetComponent<MusicManagerScript>();  
     }
     public void LoadNextLevel()
     {
@@ -26,11 +27,13 @@ public class LevelLoader : MonoBehaviour
 
     public void RetryScreen()
     {
-        transition.SetTrigger("Start");
+        retryAnimation.SetTrigger("Start");
+
     }
 
     public void RetryLevel()
     {
+
         StartCoroutine(RetryLevelCo());
     }
 
@@ -69,6 +72,9 @@ public class LevelLoader : MonoBehaviour
             case ("MainGame"):
                 audiomanager.playAudio(audiomanager.joybgm);
                 break;
+            case ("MainGame2"):
+                audiomanager.playAudio(audiomanager.joybgm);
+                break;
 
         }
         transition.SetTrigger("End");
@@ -77,9 +83,15 @@ public class LevelLoader : MonoBehaviour
     IEnumerator RetryLevelCo()
     {
         transition.SetTrigger("Start");
-
+        
         yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        retryAnimation.SetTrigger("End");   
+
+        yield return new WaitForSeconds(0.5f); //checking right away would still return the old scene 
+
+        SceneManager.LoadScene("MainGame");
+          
+        transition.SetTrigger("End");
     }
 }

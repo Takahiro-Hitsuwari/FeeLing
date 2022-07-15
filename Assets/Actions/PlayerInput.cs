@@ -80,6 +80,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Retry"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bef407d-4611-445d-bb69-dd6fb27b0d2a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -214,6 +223,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Dialogue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf9d614b-67bc-4b59-aed1-46fb2de2d72c"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Retry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -228,6 +248,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Skill3 = m_Player.FindAction("Skill3", throwIfNotFound: true);
         m_Player_Skill4 = m_Player.FindAction("Skill4", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
+        m_Player_Retry = m_Player.FindAction("Retry", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Skill3;
     private readonly InputAction m_Player_Skill4;
     private readonly InputAction m_Player_Dialogue;
+    private readonly InputAction m_Player_Retry;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -303,6 +325,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Skill3 => m_Wrapper.m_Player_Skill3;
         public InputAction @Skill4 => m_Wrapper.m_Player_Skill4;
         public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
+        public InputAction @Retry => m_Wrapper.m_Player_Retry;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,6 +353,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Dialogue.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDialogue;
                 @Dialogue.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDialogue;
                 @Dialogue.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDialogue;
+                @Retry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
+                @Retry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
+                @Retry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -352,6 +378,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Dialogue.started += instance.OnDialogue;
                 @Dialogue.performed += instance.OnDialogue;
                 @Dialogue.canceled += instance.OnDialogue;
+                @Retry.started += instance.OnRetry;
+                @Retry.performed += instance.OnRetry;
+                @Retry.canceled += instance.OnRetry;
             }
         }
     }
@@ -364,5 +393,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSkill3(InputAction.CallbackContext context);
         void OnSkill4(InputAction.CallbackContext context);
         void OnDialogue(InputAction.CallbackContext context);
+        void OnRetry(InputAction.CallbackContext context);
     }
 }

@@ -12,6 +12,7 @@ public class Skill : ScriptableObject
     public bool active;
     public string tag;
     public bool is_instant;
+
     public enum Button
     {
         NULL,

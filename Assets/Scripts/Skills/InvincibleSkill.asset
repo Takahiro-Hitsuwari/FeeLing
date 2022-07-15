@@ -20,4 +20,4 @@ MonoBehaviour:
   active: 0
   tag: invincibleSkill
   is_instant: 0
-  button: 3
+  button: 0

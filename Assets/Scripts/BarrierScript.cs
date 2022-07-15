@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BarrierScript : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class BarrierScript : MonoBehaviour
     private Image pressGameObject;
     private GameObject barrier;
     private bool decreasing;
+    public Animator fadeInAnim;
     //private LevelLoader levelLoader;
 
     void Start()
@@ -62,7 +64,18 @@ public class BarrierScript : MonoBehaviour
             //levelLoader.LoadSpecificScene(2);
 
             Destroy(this.gameObject);//Test
+
+            StartCoroutine(ToBossRoom());
         }
+        IEnumerator ToBossRoom()
+        {
+            fadeInAnim.SetTrigger("in");
+
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         IEnumerator PlayerBarrierIncrease(float increment)
         {
             float startings = barrier.transform.localScale.x;

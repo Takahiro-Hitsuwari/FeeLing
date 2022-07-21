@@ -15,6 +15,7 @@ public class ActionMessage : MonoBehaviour
     void Start()
     {
         ActionButton.SetActive(false);
+        ActionText.enabled = false;
     }
 
     // Update is called once per frame
@@ -29,20 +30,28 @@ public class ActionMessage : MonoBehaviour
         if (collider.gameObject.name == "Door")//ドアの時
         {
             ActionButton.SetActive(true);
+            ActionText.enabled=true;
             ActionText.text = "入る";
         }
         else if(collider.gameObject.name == "Guide")//案内人
         {
             ActionButton.SetActive(true);
+            ActionText.enabled = true;
             ActionText.text = "話す";
         }
     }
     //抜けたら表示を切る
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject)
+        if (other.gameObject.name == "Door")//ドアの時
         {
             ActionButton.SetActive(false);
+            ActionText.enabled = false;
+        }
+        else if (other.gameObject.name == "Guide")//案内人
+        {
+            ActionButton.SetActive(false);
+            ActionText.enabled = false;
         }
     }
 }

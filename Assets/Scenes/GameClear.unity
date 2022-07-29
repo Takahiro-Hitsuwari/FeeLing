@@ -1014,6 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec134734f2b9f94ba31d8675b9eec38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  continueButton: {fileID: 664148680}
 --- !u!1 &1467255851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,8 +1149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42dcb7dd240d5dc499947060479e3bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoader: {fileID: 0}
+  invincible: 0
   invicibilityTime: 3
+  hitparticle: {fileID: 0}
+  shakeCamera: {fileID: 0}
 --- !u!95 &1467255857
 Animator:
   serializedVersion: 4
@@ -1182,14 +1185,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4fe00b05cac0f445a8b95d1d43db9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoader: {fileID: 0}
-  retryLevel: {fileID: 0}
   bodyparts:
   - {fileID: 196809729419988301}
   - {fileID: 7543918201444050916}
   - {fileID: 2489177613758163539}
   - {fileID: 123191311924111970}
   playerDeathEffect: {fileID: 0}
+  evsys: {fileID: 0}
 --- !u!114 &1467255859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,6 +1206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 11400000, guid: e1b24c9eb12452a42959680b32434daa, type: 2}
+  canUseSkills: 1
+  SkillUiSprites: []
 --- !u!1 &1513405863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1510,10 @@ MonoBehaviour:
   enemy: {fileID: 0}
   infiniteMove: 1
   stopingSpeed: 0
+  N_ofmaps: 0
+  ProgressImage: {fileID: 0}
+  heartImage: {fileID: 0}
+  Player: {fileID: 0}
 --- !u!1001 &1880462619
 PrefabInstance:
   m_ObjectHideFlags: 0

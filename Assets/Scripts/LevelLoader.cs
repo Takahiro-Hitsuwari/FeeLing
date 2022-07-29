@@ -73,7 +73,13 @@ public class LevelLoader : MonoBehaviour
                 audiomanager.playAudio(audiomanager.joybgm);
                 break;
             case ("MainGame2"):
-                audiomanager.playAudio(audiomanager.joybgm);
+                audiomanager.playAudio(audiomanager.ikaribgm);
+                break;
+                case ("BossRoom"):
+                audiomanager.playAudio(audiomanager.startscenebgm);
+                break;
+                case ("RakuBoss"):
+                audiomanager.playAudio(audiomanager.startscenebgm);
                 break;
 
         }

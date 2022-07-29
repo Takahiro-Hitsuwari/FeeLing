@@ -103,6 +103,9 @@ public class Attackholder : MonoBehaviour
             case (Attackholder.AttackType.Šì_‰Ôá):
                 k.attack = defaultAttacks[2];
                 break;
+                    case (Attackholder.AttackType.“{_‰Î’Œ):
+                k.attack = defaultAttacks[3];
+                break;
         }
     }
 

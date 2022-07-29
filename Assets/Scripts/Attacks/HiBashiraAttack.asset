@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aabffa42634be7f409df98d004c45523, type: 3}
-  m_Name: TogeAttack
+  m_Name: HiBashiraAttack
   m_EditorClassIdentifier: 
-  durationAlert: 0.5
+  durationAlert: 1
   duration: 3
-  name: "\u3068\u3052"
+  name: "\u6012_\u706B\u67F1"
   precision: 1.5
   alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,
     type: 3}
-  AttackPrefab: {fileID: 6594377210786319025, guid: ecee5dec17de8ae4bb27fa7a35f2e1d1,
+  AttackPrefab: {fileID: 721676921870507964, guid: fed2a1b7a4e7c1342bb68e5abaefc241,
     type: 3}
   showAlert: 1

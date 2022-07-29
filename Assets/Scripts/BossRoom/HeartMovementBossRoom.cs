@@ -66,14 +66,14 @@ public class HeartMovementBossRoom : MonoBehaviour
 
     void HandleAnimation()
     {
-        //if(isMovementPressed)
-        //{
-        //    anim.SetBool("isRun", true);
-        //}
-        //else
-        //{
-        //    anim.SetBool("isRun", false);
-        //}
+        if(isMovementPressed)
+        {
+            anim.SetBool("isRun", true);
+        }
+        else
+        {
+            anim.SetBool("isRun", false);
+        }
     }
 
     void Update()

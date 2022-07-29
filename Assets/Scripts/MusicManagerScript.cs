@@ -6,6 +6,8 @@ public class MusicManagerScript : MonoBehaviour
 {
     public AudioClip startscenebgm;
     public AudioClip joybgm;
+
+    public AudioClip ikaribgm;
     private AudioSource aus;
     void Start()
     {

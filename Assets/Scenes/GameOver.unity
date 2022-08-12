@@ -198,6 +198,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BGMHolder, Assembly-CSharp
+        m_MethodName: PlayBGM
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &13109452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,6 +1369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2087260409}
   - component: {fileID: 2087260408}
+  - component: {fileID: 2087260412}
   - component: {fileID: 2087260407}
   - component: {fileID: 2087260406}
   - component: {fileID: 2087260410}
@@ -1453,4 +1466,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 0}
-  audiomanager: {fileID: 0}
+  retryAnimation: {fileID: 0}
+--- !u!223 &2087260412
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087260405}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0

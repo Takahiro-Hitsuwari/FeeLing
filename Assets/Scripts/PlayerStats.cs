@@ -25,10 +25,8 @@ public class PlayerStats : MonoBehaviour
     public ParticleSystem playerDeathEffect;
     public EventSystem evsys;
 
-
     private void Start()
     {
-      
         levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
     }
 
@@ -40,7 +38,6 @@ public class PlayerStats : MonoBehaviour
             transform.gameObject.SetActive(false);
             playerDeathEffect.Play();
             //StartCoroutine(Getbutton());
-            
 
         }
     }

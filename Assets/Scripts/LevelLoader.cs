@@ -11,7 +11,7 @@ public class LevelLoader : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-        audiomanager = GetComponent<MusicManagerScript>();  
+        audiomanager = GetComponent<MusicManagerScript>(); 
     }
     public void LoadNextLevel()
     {
@@ -22,13 +22,11 @@ public class LevelLoader : MonoBehaviour
     public void PreviousGame()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
-
     }
-
     public void RetryScreen()
+
     {
         retryAnimation.SetTrigger("Start");
-
     }
 
     public void RetryLevel()
@@ -91,13 +89,13 @@ public class LevelLoader : MonoBehaviour
         transition.SetTrigger("Start");
         
         yield return new WaitForSeconds(1f);
-
+        
         retryAnimation.SetTrigger("End");   
 
         yield return new WaitForSeconds(0.5f); //checking right away would still return the old scene 
 
         SceneManager.LoadScene("MainGame");
-          
+ 
         transition.SetTrigger("End");
     }
 }

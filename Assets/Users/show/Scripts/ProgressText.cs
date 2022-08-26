@@ -23,26 +23,28 @@ public class ProgressText : MonoBehaviour
 
     void ProgressUIText()
     {
-        if (clearedStage == 4)
+        switch(clearedStage)
         {
-            progressText.text = "憎悪を浄化しよう";
+            case 1:
+                progressText.text = "感情の神:怒を浄化しよう";
+                break;
+            case 2:
+                progressText.text = "感情の神:哀を浄化しよう";
+                break ;
+            case 3:
+                progressText.text = "感情の神:楽を浄化しよう";
+                break;
+            case 4:
+                progressText.text = "憎悪を浄化しよう";
+                break;
+            default:
+                progressText.text = "感情の神:喜を浄化しよう";
+                break;
+
+
+
         }
-        else if (clearedStage == 3)
-        {
-            progressText.text = "感情の神:楽を浄化しよう";
-        }
-        else if (clearedStage == 2)
-        {
-            progressText.text = "感情の神:哀を浄化しよう";
-        }
-        else if (clearedStage == 1)
-        {
-            progressText.text = "感情の神:怒を浄化しよう";
-        }
-        else
-        {
-            progressText.text = "感情の神:喜を浄化しよう";
-        }
+           
     }
     //StageをクリアしたらclearedStageを++する関数
     //(5まで増えたらリセット)

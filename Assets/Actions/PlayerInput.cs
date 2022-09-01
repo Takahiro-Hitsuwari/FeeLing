@@ -89,6 +89,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""cheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c301e09-7fa9-4bb8-a743-c0419da9aded"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -234,6 +243,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Retry"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0558aef-a59d-4d36-be98-f6d93ec893a2"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -249,6 +269,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Skill4 = m_Player.FindAction("Skill4", throwIfNotFound: true);
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_Retry = m_Player.FindAction("Retry", throwIfNotFound: true);
+        m_Player_cheat = m_Player.FindAction("cheat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -315,6 +336,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Skill4;
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_Retry;
+    private readonly InputAction m_Player_cheat;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -326,6 +348,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Skill4 => m_Wrapper.m_Player_Skill4;
         public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
         public InputAction @Retry => m_Wrapper.m_Player_Retry;
+        public InputAction @cheat => m_Wrapper.m_Player_cheat;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -356,6 +379,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Retry.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
                 @Retry.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
                 @Retry.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRetry;
+                @cheat.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
+                @cheat.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
+                @cheat.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -381,6 +407,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Retry.started += instance.OnRetry;
                 @Retry.performed += instance.OnRetry;
                 @Retry.canceled += instance.OnRetry;
+                @cheat.started += instance.OnCheat;
+                @cheat.performed += instance.OnCheat;
+                @cheat.canceled += instance.OnCheat;
             }
         }
     }
@@ -394,5 +423,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSkill4(InputAction.CallbackContext context);
         void OnDialogue(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
+        void OnCheat(InputAction.CallbackContext context);
     }
 }

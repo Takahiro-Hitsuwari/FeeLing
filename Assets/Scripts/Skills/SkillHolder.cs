@@ -43,8 +43,8 @@ public class SkillHolder : MonoBehaviour
     }
     public void Skill2Button(InputAction.CallbackContext context)
     {
-        if(context.ReadValueAsButton())
-            pressButton = pressedButton.RIGHT;
+        if (context.ReadValueAsButton())
+            pressButton = pressedButton.LEFT;
     }
     public void Skill3Button(InputAction.CallbackContext context)
     {
@@ -54,7 +54,7 @@ public class SkillHolder : MonoBehaviour
     public void Skill4Button(InputAction.CallbackContext context)
     {
         if (context.ReadValueAsButton())
-            pressButton = pressedButton.LEFT;
+            pressButton = pressedButton.RIGHT;
     }
 
     void Update()
@@ -109,9 +109,14 @@ public class SkillHolder : MonoBehaviour
             else
             {
                 if (img.GetComponent<Image>().sprite != SkillUiSprites[0])
+                {
                     img.GetComponent<Image>().sprite = SkillUiSprites[0];
+                    LevelLoader ung = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+                    ung.soundEffect.playAudio(ung.soundEffect.skillCharge);
+                }
             }
 
+            if (activatedSkill != null && !activatedSkill.active)   
             if (activatedSkill != null && !activatedSkill.active)
             {
                 print("Activating skill: " + s.name);

@@ -21,17 +21,20 @@ public class BarrierScript : MonoBehaviour
     private float shakeMagnitude = 0.05f;
     private GameObject mainCamera;
     private bool barrierDestroyed = false;
+    private Vector3 cameraPos;
 
     void Start()
     {
         barrier = GameObject.Find("PlayerBarrier");
-        stageSpeed = GameObject.Find("MapParent").GetComponent<StageMovement>();    
+        stageSpeed = GameObject.Find("MapParent").GetComponent<StageMovement>();
         pressGameObject = GameObject.Find("pressImage").GetComponent<Image>();
         levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
         shakeCamera = GameObject.Find("Main Camera").GetComponent<CameraShake>();
         mainCamera = GameObject.Find("FollowCamera");
+        cameraPos = mainCamera.transform.position;
     }
 
+ 
     void Update()
     {
         timer = timer + Time.deltaTime;
@@ -51,6 +54,8 @@ public class BarrierScript : MonoBehaviour
                     shakeCamera.Shake(0.35f, shakeMagnitude);
                     shakeMagnitude += 0.05f;
                     decreasing = false;
+                    levelLoader.soundEffect.playAudio(levelLoader.soundEffect.barrierAttack);
+                    levelLoader.soundEffect.GetComponent<AudioSource>().pitch += 0.1f;
                     StartCoroutine(PlayerBarrierIncrease(0.5f));
                     timer = 0;
                 }   
@@ -60,18 +65,27 @@ public class BarrierScript : MonoBehaviour
                 shakeMagnitude = 0.03f;
                 consecutive = 1;
                 if(!decreasing)
-                StartCoroutine(PlayerBarrierDecrease(2.5f));
+                {
+                    levelLoader.soundEffect.GetComponent<AudioSource>().pitch = 1;
+                    StartCoroutine(PlayerBarrierDecrease(2.5f));
+                }
+               
                 timer = 0;
             }
            
         }
-        if(consecutive == 10)
+        if (consecutive == 10)
         {
             //barriarÇè¡Ç∑èàóùÇÇ±Ç±Ç…
             pressGameObject.enabled = false;
             if (!decreasing)
+            {
                 StartCoroutine(PlayerBarrierDecrease(1f));
+
+            }
             barrierDestroyed = true;
+            levelLoader.soundEffect.GetComponent<AudioSource>().pitch = 1;
+            levelLoader.soundEffect.playAudio(levelLoader.soundEffect.barrierDestroy);
 
 
             //levelLoader.LoadSpecificScene(2);
@@ -84,6 +98,7 @@ public class BarrierScript : MonoBehaviour
             levelLoader.LoadNextLevel();
             //StartCoroutine(ToBossRoom());
         }
+
 
 
         IEnumerator PlayerBarrierIncrease(float increment)
@@ -109,7 +124,7 @@ public class BarrierScript : MonoBehaviour
                 if (!decreasing)
                     break;
                 barrier.transform.localScale = Vector3.Lerp(barrier.transform.localScale, Vector3.zero, 5f * Time.deltaTime);
-                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, Vector3.zero, tmpspeed * Time.deltaTime);
+                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, cameraPos, tmpspeed * Time.deltaTime);
                 yield return 0;
             }
 

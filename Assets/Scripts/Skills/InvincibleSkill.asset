@@ -15,9 +15,9 @@ MonoBehaviour:
   cooldownTime: 10
   cooldown: 10
   name: invincibility
-  duration: 5
-  duration_cooldown: 5
+  duration: 0
+  duration_cooldown: 0
   active: 0
   tag: invincibleSkill
-  is_instant: 0
-  button: 0
+  is_instant: 1
+  button: 2

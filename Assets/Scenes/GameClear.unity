@@ -333,6 +333,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2596b6eea89d9c4d926a870b8c2f7c6, type: 3}
+--- !u!1 &329769800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4707147363609077133, guid: e2596b6eea89d9c4d926a870b8c2f7c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 329769799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1198,7 @@ MonoBehaviour:
   - {fileID: 123191311924111970}
   playerDeathEffect: {fileID: 0}
   evsys: {fileID: 0}
+  dead: 0
 --- !u!114 &1467255859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,11 +1510,9 @@ MonoBehaviour:
   stagePrefab: {fileID: 4707147363609077133, guid: e2596b6eea89d9c4d926a870b8c2f7c6,
     type: 3}
   stageContainer: {fileID: 612685166}
-  stagedoor: {fileID: 352457867420747794, guid: cc6b62fdff39e2947936ead94c69c7a6,
-    type: 3}
+  stagedoor: {fileID: 329769800}
   speed: 10
   timemanager: {fileID: 0}
-  enemy: {fileID: 0}
   infiniteMove: 1
   stopingSpeed: 0
   N_ofmaps: 0

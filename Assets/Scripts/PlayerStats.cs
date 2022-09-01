@@ -20,14 +20,19 @@ public class Stats
 public class PlayerStats : MonoBehaviour
 {
     private LevelLoader levelLoader;
-    public Stats playerStats = new Stats();
+    public Stats playerStats;
     public GameObject[] bodyparts;
     public ParticleSystem playerDeathEffect;
     public EventSystem evsys;
+    public bool dead;
+
 
     private void Start()
     {
         levelLoader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+        playerStats = new Stats();
+        dead = false;
+
     }
 
     void Update()
@@ -37,16 +42,17 @@ public class PlayerStats : MonoBehaviour
             levelLoader.RetryScreen();
             transform.gameObject.SetActive(false);
             playerDeathEffect.Play();
+            dead = true;
             //StartCoroutine(Getbutton());
-
         }
     }
 
     
     public void DestroyBP()
     {
-        bodyparts[playerStats.Maxhp - playerStats.Hp].gameObject.SetActive(false);
-        playerStats.Hp --;
+            bodyparts[playerStats.Maxhp - playerStats.Hp].gameObject.SetActive(false);
+            playerStats.Hp--;
+            levelLoader.soundEffect.playAudio(levelLoader.soundEffect.damage);
     }
 
     public void AddBP()

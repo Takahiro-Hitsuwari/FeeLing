@@ -15,7 +15,6 @@ public class StageMovement : MonoBehaviour
     public float speed;
     public TimerStage timemanager;
     private bool slowingDown = false;
-    public GameObject enemy;
     public bool infiniteMove;
     public float stopingSpeed;
     private float sizeWholeMap = 0;
@@ -48,11 +47,14 @@ public class StageMovement : MonoBehaviour
 
     void Start()
     {
-        startingSpeed = speed;
+        if (!infiniteMove)
+        { 
+            startingSpeed = speed;
         sizeMesh = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>().bounds.size.z;
         startingPos = -sizeMesh;
         progressImageSize = ProgressImage.GetComponent<RectTransform>().rect.width;
         heartStartPos = heartImage.transform.localPosition.x;
+      }
 
         //Instantiate x floor
         for (int i = 0; i < N_ofmaps -1; i++)
@@ -68,6 +70,9 @@ public class StageMovement : MonoBehaviour
 
     void Update()
     {
+        if (Player.GetComponent<PlayerStats>().dead)
+            return;
+
         if (infiniteMove)
         {
             stage.transform.Translate(Vector3.back * speed * Time.deltaTime);
@@ -97,7 +102,6 @@ public class StageMovement : MonoBehaviour
                         speed = startingSpeed;
 
                     //Player.GetComponent<SkillHolder>().canUseSkills = false;
-                    enemy.GetComponent<Attackholder>().can_attack = false;
                     slowingDown = true;
                 }
                 else if (speed > 0)

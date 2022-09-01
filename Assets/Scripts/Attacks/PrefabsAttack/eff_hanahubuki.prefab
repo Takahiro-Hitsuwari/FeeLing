@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 174418222943863193}
   m_Layer: 0
   m_Name: leaf
-  m_TagString: Obstacle1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 174418223132890914}
   - component: {fileID: 174418223132890915}
   - component: {fileID: 174418223132890908}
-  - component: {fileID: 7616299103180700629}
+  - component: {fileID: 5125455365107850661}
   m_Layer: 0
   m_Name: eff_hanahubuki
   m_TagString: Obstacle1
@@ -4839,8 +4839,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 174418223132890909}
   m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: -0.0094771, y: 1.0468, z: 0.69356}
-  m_LocalScale: {x: 0.1375937, y: 0.1375937, z: 0.1375937}
+  m_LocalPosition: {x: 0.5057414, y: 3.3931892, z: 25.58}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 174418224153096317}
@@ -9629,7 +9629,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!65 &7616299103180700629
+--- !u!65 &5125455365107850661
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9640,8 +9640,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.815747, y: 11.605574, z: 38.319973}
-  m_Center: {x: 0.25211453, y: -0.352965, z: 18.449986}
+  m_Size: {x: 15.012484, y: 21.43115, z: 46.934605}
+  m_Center: {x: -0.25170803, y: 0.6922078, z: 19.233313}
 --- !u!1 &174418224123113686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9655,7 +9655,7 @@ GameObject:
   - component: {fileID: 174418224123113684}
   m_Layer: 0
   m_Name: petal_yellow
-  m_TagString: Obstacle1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14467,7 +14467,7 @@ GameObject:
   - component: {fileID: 174418224153096316}
   m_Layer: 0
   m_Name: petal_cherryblossom
-  m_TagString: Obstacle1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19279,7 +19279,7 @@ GameObject:
   - component: {fileID: 174418224244643388}
   m_Layer: 0
   m_Name: flower_orange
-  m_TagString: Obstacle1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

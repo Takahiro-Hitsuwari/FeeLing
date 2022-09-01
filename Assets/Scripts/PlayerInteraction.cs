@@ -31,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
                 case ("Obstacle1"):
                     //Destroy(transform.GetChild(0).transform.GetChild(0).gameObject);
                     shakeCamera.Shake(0.50f, 0.2f);
-                    playerStats.DestroyBP();
+                    playerStats.DestroyBP(); 
                     hitparticle.Play();
 
                     StartCoroutine(Invulnerability());
@@ -46,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    IEnumerator Invulnerability()
+    public IEnumerator Invulnerability()
     {
         invincible = true;
         animator.SetTrigger("hit");

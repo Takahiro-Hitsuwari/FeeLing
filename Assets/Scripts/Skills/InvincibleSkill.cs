@@ -9,12 +9,11 @@ public class InvincibleSkill : Skill
     public override void Activate(GameObject parent)
     {
         parent.GetComponent<Animator>().SetTrigger("invincibleSkill");
-        parent.GetComponent<PlayerInteraction>().invincible = true;
+        parent.GetComponent<PlayerInteraction>().StartCoroutine(parent.GetComponent<PlayerInteraction>().Invulnerability());
     }
 
     public override void Deactivate(GameObject parent)
     {
-        parent.GetComponent<Animator>().ResetTrigger("invincibleSkill");
-        parent.GetComponent<PlayerInteraction>().invincible = false;
+       
     }
 }

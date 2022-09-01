@@ -6,31 +6,23 @@ using UnityEngine;
 
 public class Attackholder : MonoBehaviour
 {
-    [System.Serializable]
-    public enum AttackType
-    {
-        喜_茨,
-        喜_花吹雪,
-        喜_とげ,
-        怒_ファイヤーウェーブ,
-        怒_メテオ,
-        怒_火柱,
-        怒_地獄,
-        哀_スケート,
-        哀_ブリザード,
-        哀_クリスタル,
-        哀_クリスタルアーチ,
-        楽_ピアノ,
-        楽_荒ぶる音楽隊,
-        楽_音符,
-        楽_
-
-    }
+    //[System.Serializable]
+    //public enum AttackType
+    //{
+    //    attack1_1,
+    //    attack1_2,
+    //    attack1_3,
+    //    attack2_1,
+    //    attack2_2,
+    //    attack2_3,
+    //    attack3_1,
+    //    attack3_2,
+    //    attack3_3,
+    //}
 
     [System.Serializable]
     public class kougeki
     {
-        public AttackType type { get; set; }
         public float time { get; set; }
         public bool active { get; set; }
         public Attack attack { get; set; }
@@ -45,31 +37,41 @@ public class Attackholder : MonoBehaviour
     private float timer;
     public GameObject map;
     public bool can_attack;
+    [HideInInspector]
+    public float time_tick_attack;
     [HideInInspector] 
     public List<kougeki> attackList = new List<kougeki>();
+    public StageMovement stagemov;
     private void Start()
     {
-        LoadInspectorData();
-        foreach(kougeki k in attackList)
-        {
-            k.alertTimer = 0;
-        }
-
+        time_tick_attack = 1;
     }
     void Update()
     {
-        timer += Time.deltaTime;
+        if (player.GetComponent<PlayerStats>().dead)
+                return;
 
-        foreach (kougeki k in attackList)
+        timer += Time.deltaTime;
+        if (stagemov.ProgressImage.fillAmount > 0.9f)
+            return;
+
+        if (stagemov.ProgressImage.fillAmount < 0.5f)
         {
-            if (k.attack != null)
-            {
-                if (timer >= k.time && !k.active)
-                {
-                    k.active = true;
-                    k.attack.Alert(this.gameObject,k);
-                }
-            }
+            time_tick_attack = 0.9f - stagemov.ProgressImage.fillAmount;
+        }
+        else if(stagemov.ProgressImage.fillAmount > 0.5f)
+        {
+            time_tick_attack = stagemov.ProgressImage.fillAmount;
+        }
+        if(timer > time_tick_attack)
+        {
+            timer = 0;
+            kougeki k = new kougeki();
+            k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];
+            k.active = true;
+            k.attack.Alert(this.gameObject, k);
+            attackList.Add(k);
+
         }
 
         foreach (kougeki k in attackList)
@@ -90,55 +92,61 @@ public class Attackholder : MonoBehaviour
         }
     }
 
-    public void AssignAttack(kougeki k)
-    {
-        switch (k.type)
-        {
-            case (Attackholder.AttackType.喜_とげ):
-                k.attack = defaultAttacks[0];
-                break;
-            case (Attackholder.AttackType.喜_茨):
-                k.attack = defaultAttacks[1];
-                break;
-            case (Attackholder.AttackType.喜_花吹雪):
-                k.attack = defaultAttacks[2];
-                break;
-                    case (Attackholder.AttackType.怒_火柱):
-                k.attack = defaultAttacks[3];
-                break;
-        }
-    }
+    //public void AssignAttack(kougeki k)
+    //{
+    //    switch (k.type)
+    //    {
+    //        case (Attackholder.AttackType.attack1_1):
+    //            k.attack = defaultAttacks[0];
+    //            break;
+    //        case (Attackholder.AttackType.attack1_2):
+    //            k.attack = defaultAttacks[1];
+    //            break;
+    //        case (Attackholder.AttackType.attack1_3):
+    //            k.attack = defaultAttacks[2];
+    //            break;
+    //        case (Attackholder.AttackType.attack2_1):
+    //            k.attack = defaultAttacks[3];
+    //            break;
+    //        case (Attackholder.AttackType.attack2_2):
+    //            k.attack = defaultAttacks[3];
+    //            break;
+    //        case (Attackholder.AttackType.attack2_3):
+    //            k.attack = defaultAttacks[3];
+    //            break;
+    //    }
+    //}
 
-    public void LoadInspectorData()
-    {
-        int i = 0;
-        string xtype = PlayerPrefs.GetString("type_" + i);
+    //public void LoadInspectorData()
+    //{
+    //    int i = 0;
+    //    string xtype = PlayerPrefs.GetString("type_" + i);
 
-        while (xtype != null && xtype != "")
-        {
-            xtype = PlayerPrefs.GetString("type_" + i);
-            foreach (AttackType a in (AttackType[])Enum.GetValues(typeof(AttackType)))
-            {
-                if(xtype == a.ToString())
-                {
-                    if (attackList.Count <= i)
-                        attackList.Add(new kougeki());
+    //    while (xtype != null && xtype != "")
+    //    {
+    //        xtype = PlayerPrefs.GetString("type_" + i);
+    //        foreach (AttackType a in (AttackType[])Enum.GetValues(typeof(AttackType)))
+    //        {
+    //            if(xtype == a.ToString())
+    //            {
+    //                if (attackList.Count <= i)
+    //                    attackList.Add(new kougeki());
 
-                    attackList[i].type = a;
-                    attackList[i].time = PlayerPrefs.GetFloat("time_" + i);
-                    AssignAttack(attackList[i]);
-                    break;
-                }
+    //                attackList[i].type = a;
+    //                attackList[i].time = PlayerPrefs.GetFloat("time_" + i);
+    //                AssignAttack(attackList[i]);
+    //                break;
+    //            }
 
-            }
+    //        }
           
-            i++;
-        }
+    //        i++;
+    //    }
 
-        while (attackList.Count > i)
-        {
-            attackList.Remove(attackList[i]);
-        }
-    }
+    //    while (attackList.Count > i)
+    //    {
+    //        attackList.Remove(attackList[i]);
+    //    }
+    //}
 
 }

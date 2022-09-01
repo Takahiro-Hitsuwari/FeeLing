@@ -7,7 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
-    guid: 01b5635e19977a54a952afd06641b912
+    guid: 0b4b32e7befbaa34e8f31f87bda06f71
   - enabled: 1
     path: Assets/Scenes/Map1.unity
     guid: d7fe63757e05b0b46b9977fb4aca4e4e
@@ -16,10 +16,25 @@ EditorBuildSettings:
     guid: 919cf83490d10fa44a1db6d00e586ca4
   - enabled: 1
     path: Assets/Scenes/Map2.unity
-    guid: 6088414d5ffadf24b92935b1403becff
+    guid: dd517e8328ca8f34883faf6fa8c72d8a
   - enabled: 1
     path: Assets/Scenes/Map2Boss.unity
-    guid: 5853254d19bc2be4abf6e02e75a35c2a
+    guid: 81f2e18de383d3648a853ef7fb4f95b4
+  - enabled: 1
+    path: Assets/Scenes/Map3.unity
+    guid: 412b47b1e71199245955a64cdc1dd675
+  - enabled: 1
+    path: Assets/Scenes/Map3Boss.unity
+    guid: 70840194308e1694f8d547ad78d97097
+  - enabled: 1
+    path: Assets/Scenes/Map4.unity
+    guid: 23552d2e0fae2b249ade001e2c60c4f5
+  - enabled: 1
+    path: Assets/Scenes/Map4Boss.unity
+    guid: 86dcc11a9207de340aac8ce5c4e36edd
+  - enabled: 1
+    path: Assets/Scenes/Map5.unity
+    guid: 84e907d7127604b448e235e47a73e2a3
   - enabled: 1
     path: Assets/Scenes/GameClear.unity
     guid: 39c21091b1b58df41a59e77ee8816644

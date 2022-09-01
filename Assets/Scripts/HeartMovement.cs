@@ -40,7 +40,7 @@ public class HeartMovement : MonoBehaviour
         isMovementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
     }
 
-    void handleMovement()
+        void handleMovement()
     {
         currentMovement = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
 

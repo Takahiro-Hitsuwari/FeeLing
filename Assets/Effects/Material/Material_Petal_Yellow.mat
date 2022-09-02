@@ -21,17 +21,16 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Material_Petal_Yellow
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ShaderKeywords: _ENVIRONMENTREFLECTIONS_OFF _SURFACE_TYPE_TRANSPARENT
+  m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
+  m_ShaderKeywords: _ALPHA_TRANSITION_MAP_MODE_2D _BASE_MAP_MODE_2D _EMISSION_COLOR_COLOR
+    _EMISSION_MAP_MODE_2D _TINT_COLOR_ENABLED
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
     RenderType: Transparent
-  disabledShaderPasses:
-  - DepthOnly
-  - SHADOWCASTER
+  disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -100,7 +99,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f8056430cfe70bf48b4d8c1743514c5c, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -162,7 +161,6 @@ Material:
     - _BaseMapSliceCount: 4
     - _Blend: 0
     - _BlendDst: 1
-    - _BlendOp: 0
     - _BlendSrc: 5
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -179,7 +177,7 @@ Material:
     - _DissolveSharpness: 0.5
     - _DistortionIntensity: 0.1
     - _DistortionIntensityCoord: 0
-    - _DstBlend: 10
+    - _DstBlend: 0
     - _EmissionAreaType: 0
     - _EmissionColorType: 0
     - _EmissionIntensity: 1
@@ -188,7 +186,7 @@ Material:
     - _EmissionMapProgress: 0
     - _EmissionMapProgressCoord: 0
     - _EmissionMapSliceCount: 4
-    - _EnvironmentReflections: 0
+    - _EnvironmentReflections: 1
     - _FlowIntensity: 1
     - _FlowIntensityCoord: 0
     - _FlowMapOffsetXCoord: 0
@@ -207,7 +205,6 @@ Material:
     - _LuminanceTransparencySharpness: 0.5
     - _LuminanceTransparencySharpnessCoord: 0
     - _Metallic: 0
-    - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
@@ -218,14 +215,13 @@ Material:
     - _RimTransparencyProgressCoord: 0
     - _RimTransparencySharpness: 0.5
     - _RimTransparencySharpnessCoord: 0
-    - _SampleGI: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesIntensity: 1
     - _SpecularHighlights: 1
-    - _SrcBlend: 5
-    - _Surface: 1
+    - _SrcBlend: 1
+    - _Surface: 0
     - _TintAreaMode: 0
     - _TintBlendRate: 1
     - _TintBlendRateCoord: 0
@@ -238,7 +234,6 @@ Material:
     - _TintRimSharpness: 0.5
     - _TintRimSharpnessCoord: 0
     - _TransparentBlendMode: 1
-    - _UVSec: 0
     - _VertexAlphaMode: 0
     - _WorkflowMode: 1
     - _ZWrite: 0

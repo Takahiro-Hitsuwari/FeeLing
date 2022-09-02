@@ -19,6 +19,7 @@ public class LevelLoader : MonoBehaviour
     public TextMeshProUGUI textretry;
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         DontDestroyOnLoad(this.gameObject);
         audiomanager = GetComponent<MusicManagerScript>(); 
     }
@@ -105,13 +106,13 @@ public class LevelLoader : MonoBehaviour
                 audiomanager.playAudio(audiomanager.ikaribgm);
                 break;
             case ("Map3"):
-                audiomanager.playAudio(audiomanager.ikaribgm);
+                audiomanager.playAudio(audiomanager.map3Bgm);
                 break;
             case ("Map4"):
-                audiomanager.playAudio(audiomanager.joybgm);
+                audiomanager.playAudio(audiomanager.rakuBgm);
                 break;
             case ("Map5"):
-                audiomanager.playAudio(audiomanager.ikaribgm);
+                audiomanager.playAudio(audiomanager.Map5Bgm);
                 break;
             case ("Map1Boss"):
                 audiomanager.playAudio(audiomanager.startscenebgm);
@@ -128,10 +129,6 @@ public class LevelLoader : MonoBehaviour
             case ("Map5Boss"):
                 audiomanager.playAudio(audiomanager.startscenebgm);
                 break;
-            default:
-                audiomanager.playAudio(audiomanager.startscenebgm);
-                break;
-
         }
         transition.SetTrigger("End");
     }

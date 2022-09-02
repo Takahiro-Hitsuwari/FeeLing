@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabffa42634be7f409df98d004c45523, type: 3}
   m_Name: CrystalSpike
   m_EditorClassIdentifier: 
-  durationAlert: 0.73
+  durationAlert: 0.5
   duration: 3
   name: crystal
   precision: 1.5

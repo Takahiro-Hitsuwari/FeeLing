@@ -17,6 +17,8 @@ public class LevelLoader : MonoBehaviour
     public GameObject QuitButton;
     public byte retries = 5;
     public TextMeshProUGUI textretry;
+    public bool[] Tutorials = new bool[4];
+    
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -26,8 +28,8 @@ public class LevelLoader : MonoBehaviour
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
-
     }
+
 
     public void PreviousGame()
     {
@@ -133,7 +135,7 @@ public class LevelLoader : MonoBehaviour
         transition.SetTrigger("End");
     }
 
-    IEnumerator RetryLevelCo()
+    public IEnumerator RetryLevelCo()
     {
         transition.SetTrigger("Start");
         

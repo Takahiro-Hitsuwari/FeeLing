@@ -49,6 +49,7 @@ public class HeartMovement : MonoBehaviour
 
         void Update()
     {
+        if(canMove)
         handleMovement();
     }
 

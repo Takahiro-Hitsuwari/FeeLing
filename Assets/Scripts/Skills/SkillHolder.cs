@@ -105,6 +105,10 @@ public class SkillHolder : MonoBehaviour
             else if(s.button.ToString() == pressButton.ToString() && s.button != Skill.Button.NULL)
             {
                 activatedSkill = s;
+                if(GameObject.Find("MapParent").GetComponent<StageMovement>().tutorial)
+                {
+                    StartCoroutine(GameObject.Find("MapParent").GetComponent<StageMovement>().TutorialCompleted());
+                }
             }
             else
             {

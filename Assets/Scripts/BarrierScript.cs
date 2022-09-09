@@ -39,7 +39,7 @@ public class BarrierScript : MonoBehaviour
     {
         timer = timer + Time.deltaTime;
 
-        if( stageSpeed.speed <= 0)
+        if( stageSpeed.speed <= 0 && !stageSpeed.tutorial)
         {
             if(!pressGameObject.enabled)
             {

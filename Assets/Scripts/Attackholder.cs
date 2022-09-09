@@ -59,7 +59,7 @@ public class Attackholder : MonoBehaviour
                 return;
 
         timer += Time.deltaTime;
-        if (stagemov.ProgressImage.fillAmount > 0.9f)
+        if (stagemov.ProgressImage.IsActive() && stagemov.ProgressImage.fillAmount > 0.9f)
             return;
 
         if (is_incremental)
@@ -74,24 +74,28 @@ public class Attackholder : MonoBehaviour
                 time_tick_attack  = (1.5f - difficulty - 0.5f) + ( stagemov.ProgressImage.fillAmount - 0.5f);
             }
         }
-        if(timer > time_tick_attack)
+        if (!stagemov.infiniteMove)
         {
-            Debug.Log(difficulty);
-            timer = 0;
-            kougeki k = new kougeki();
-            k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];
-            k.active = true;
-            k.attack.Alert(this.gameObject, k);
-            attackList.Add(k);
+            if (timer > time_tick_attack)
+            {
+                timer = 0;
+                kougeki k = new kougeki();
 
+                k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];
+                k.active = true;
+                k.attack.Alert(this.gameObject, k);
+                attackList.Add(k);
+
+            }
         }
 
         foreach (kougeki k in attackList)
         {
-            if(k.active)
+            if (k.active)
             {
                 if (k.attack != null)
                 {
+                  
                     k.alertTimer += Time.deltaTime;
                     if (k.alertTimer >= k.attack.durationAlert && !k.over)
                     {
@@ -103,6 +107,18 @@ public class Attackholder : MonoBehaviour
             }
         }
     }
+
+    public void SingeAttack(bool doesHit)
+    {
+        kougeki k = new kougeki();
+        k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];
+        k.attack.precision = doesHit ? 0 : 5;
+        k.active = true;
+        k.attack.Alert(this.gameObject, k);
+        attackList.Add(k);
+    }
+        
+
 
     //public void AssignAttack(kougeki k)
     //{

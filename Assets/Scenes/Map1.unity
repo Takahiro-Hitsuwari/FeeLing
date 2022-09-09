@@ -692,6 +692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joy
       objectReference: {fileID: 0}
+    - target: {fileID: 1784116861445584078, guid: 88012abc5a8d5f9428af2cc4f83196ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88012abc5a8d5f9428af2cc4f83196ac, type: 3}
 --- !u!1001 &518196205
@@ -1238,6 +1243,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveWithTransform
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1795142408702822479, guid: 1b7357102e3830e4383e32777364cb93,
+        type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b7357102e3830e4383e32777364cb93, type: 3}
@@ -1795,6 +1805,9 @@ MonoBehaviour:
   ProgressImage: {fileID: 1809339347}
   heartImage: {fileID: 360004261}
   Player: {fileID: 1467255851}
+  tutorial: 0
+  spawnTutorialAttack: 0
+  unlockedSkill: 0
 --- !u!1 &1809339345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,7 +2054,7 @@ Canvas:
   m_GameObject: {fileID: 1996438526}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 330585545}
   m_PlaneDistance: 1
   m_PixelPerfect: 0

@@ -38,13 +38,20 @@ public class Attackholder : MonoBehaviour
     public GameObject map;
     public bool can_attack;
     [HideInInspector]
-    public float time_tick_attack;
+    public float time_tick_attack;  
     [HideInInspector] 
     public List<kougeki> attackList = new List<kougeki>();
     public StageMovement stagemov;
+    private float in_val;
+    [Space]
+    [Tooltip("難易度がどんどん上がること")]
+    public bool is_incremental = true;
+    [Tooltip("難易度（０：簡単　1：難しい）")]
+    [Range(0f, 1f)]
+    public float difficulty;
     private void Start()
     {
-        time_tick_attack = 1;
+        time_tick_attack = 1.5f - difficulty ;
     }
     void Update()
     {
@@ -55,16 +62,21 @@ public class Attackholder : MonoBehaviour
         if (stagemov.ProgressImage.fillAmount > 0.9f)
             return;
 
-        if (stagemov.ProgressImage.fillAmount < 0.5f)
+        if (is_incremental)
         {
-            time_tick_attack = 0.9f - stagemov.ProgressImage.fillAmount;
-        }
-        else if(stagemov.ProgressImage.fillAmount > 0.5f)
-        {
-            time_tick_attack = stagemov.ProgressImage.fillAmount;
+            if (stagemov.ProgressImage.fillAmount < 0.5f)
+            {
+               
+                time_tick_attack = (1.5f - difficulty) - stagemov.ProgressImage.fillAmount;
+            }
+            else if (stagemov.ProgressImage.fillAmount > 0.5f)
+            {
+                time_tick_attack  = (1.5f - difficulty - 0.5f) + ( stagemov.ProgressImage.fillAmount - 0.5f);
+            }
         }
         if(timer > time_tick_attack)
         {
+            Debug.Log(difficulty);
             timer = 0;
             kougeki k = new kougeki();
             k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];

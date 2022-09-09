@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabffa42634be7f409df98d004c45523, type: 3}
   m_Name: Hibashira
   m_EditorClassIdentifier: 
-  durationAlert: 0.7
-  duration: 4
+  durationAlert: 1
+  duration: 5
   name: Hibashira
   precision: 1.5
   alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,

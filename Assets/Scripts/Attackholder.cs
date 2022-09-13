@@ -49,12 +49,17 @@ public class Attackholder : MonoBehaviour
     [Tooltip("難易度（０：簡単　1：難しい）")]
     [Range(0f, 1f)]
     public float difficulty;
+    [Range(1, 10)]
+    public float startingFreeTime;
+    private float timerFreeTime;
     private void Start()
     {
         time_tick_attack = 1.5f - difficulty ;
+        timerFreeTime = 0;
     }
     void Update()
     {
+        timerFreeTime += Time.deltaTime;
         if (player.GetComponent<PlayerStats>().dead)
                 return;
 
@@ -74,7 +79,7 @@ public class Attackholder : MonoBehaviour
                 time_tick_attack  = (1.5f - difficulty - 0.5f) + ( stagemov.ProgressImage.fillAmount - 0.5f);
             }
         }
-        if (!stagemov.infiniteMove)
+        if (!stagemov.infiniteMove && timerFreeTime > startingFreeTime && !stagemov.tutorial)
         {
             if (timer > time_tick_attack)
             {
@@ -108,16 +113,20 @@ public class Attackholder : MonoBehaviour
         }
     }
 
-    public void SingeAttack(bool doesHit)
+    public void SingeAttack(bool doesHit,float timing)
     {
+        StartCoroutine(singleattack(doesHit, timing));
+    }
+        IEnumerator singleattack(bool hit,float time)
+    {
+        yield return new WaitForSeconds(time);
         kougeki k = new kougeki();
         k.attack = defaultAttacks[UnityEngine.Random.Range(0, 3)];
-        k.attack.precision = doesHit ? 0 : 5;
+        k.attack.precision = hit ? 0 : 5;
         k.active = true;
         k.attack.Alert(this.gameObject, k);
         attackList.Add(k);
     }
-        
 
 
     //public void AssignAttack(kougeki k)

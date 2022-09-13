@@ -886,6 +886,7 @@ MonoBehaviour:
   stagemov: {fileID: 1797974888}
   is_incremental: 1
   difficulty: 0
+  startingFreeTime: 0
 --- !u!33 &680546059
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2118,8 +2119,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730427646}
   m_LocalRotation: {x: 0.20270184, y: -0, z: -0, w: 0.97924054}
-  m_LocalPosition: {x: 0, y: 0, z: -56.893547}
-  m_LocalScale: {x: 0.0010708332, y: 0.0010708334, z: 0.0010708334}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020794823362178584}
@@ -2127,8 +2128,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -397.71246, y: -222.63582}
-  m_SizeDelta: {x: 2, y: 2}
+  m_AnchoredPosition: {x: 8.339966, y: -11.275024}
+  m_SizeDelta: {x: 25.94001, y: 64.590004}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730427648
 MonoBehaviour:
@@ -2234,7 +2235,13 @@ MonoBehaviour:
   heartImage: {fileID: 2020794821743569087}
   Player: {fileID: 1467255851}
   tutorial: 1
-  spawnTutorialAttack: 0
+  spawnTutorialAttack: 1
+  tutorialprefab: {fileID: 3486288184719850250, guid: 10af645eb4175964e83a519f2602e069,
+    type: 3}
+  canMoveWhenTutorial: 0
+  skilnum: 0
+  TimingTutorialAttack: 2
+  DurationAfterSkill: 0
   unlockedSkill: 3
 --- !u!1 &1923679928 stripped
 GameObject:

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: SlowSkill
   m_EditorClassIdentifier: 
   cooldownTime: 10
-  cooldown: 10
+  cooldown: 0
   name: SlowSkill
-  duration: 3.0159547
-  duration_cooldown: 3
-  active: 0
+  duration: 0
+  duration_cooldown: 5
+  active: 1
   tag: SlowSkill
   is_instant: 0
   button: 4

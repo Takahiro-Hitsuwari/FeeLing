@@ -26,10 +26,19 @@ public class StageMovement : MonoBehaviour
     private float heartStartPos;
     public GameObject Player;
     private float startingSpeed;
+
     [Space]
     [Header("TUTORIAL")]
     public bool tutorial;
     public bool spawnTutorialAttack;
+    public GameObject tutorialprefab;
+    public bool canMoveWhenTutorial;
+    [HideInInspector]
+    public int skilnum;
+    [Range(2f,10f)]
+    public float TimingTutorialAttack;
+    [Range(0f, 10f)]
+    public float DurationAfterSkill;
     [Range(0f, 3f)]
     public byte unlockedSkill;
 
@@ -115,8 +124,11 @@ public class StageMovement : MonoBehaviour
    
     public IEnumerator TutorialCompleted()
     {
+
         Image fadeinpanel = ProgressImage.transform.parent.transform.parent.transform.parent.GetChild(1).GetComponent<Image>();
         StartCoroutine(FadeIn(false,0,fadeinpanel));
+        yield return new WaitForSeconds(DurationAfterSkill);
+
         StartCoroutine(SlowDown(false));
         yield return new WaitForSeconds(3);
         Debug.Log("TutorialCompleted");
@@ -126,20 +138,16 @@ public class StageMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         levelLoader.Tutorials[unlockedSkill] = true;
         StartCoroutine(levelLoader.RetryLevelCo());
-        
-        
-
     }
     IEnumerator Tutorial()
     {
-        infiniteMove = true;
-        Player.GetComponent<HeartMovement>().canMove = false;
+        ////infiniteMove = true;
+        Player.GetComponent<HeartMovement>().canMove = canMoveWhenTutorial;
         Image fadeinpanel = ProgressImage.transform.parent.transform.parent.transform.parent.GetChild(1).GetComponent<Image>();
         ProgressImage.gameObject.SetActive(false);
         if (spawnTutorialAttack)
         {
-            yield return new WaitForSeconds(2);
-            GameObject.Find("AttackManager").GetComponent<Attackholder>().SingeAttack(true);
+            GameObject.Find("AttackManager").GetComponent<Attackholder>().SingeAttack(true,TimingTutorialAttack);
         }
         yield return new WaitForSeconds(3);
         StartCoroutine(FadeIn(true,0.8f,fadeinpanel));
@@ -148,15 +156,19 @@ public class StageMovement : MonoBehaviour
         switch(unlockedSkill)
         {
             case 0:
+                skilnum = 1;
                 tutorialSkill = GameObject.FindGameObjectWithTag("HealSkill");
                 break;
             case 1:
+                skilnum = 2;
                 tutorialSkill = GameObject.FindGameObjectWithTag("Impulse");
                 break;
             case 2:
+                skilnum = 4;
                 tutorialSkill = GameObject.FindGameObjectWithTag("SlowSkill");
                 break;
             case 3:
+                skilnum = 3;
                 tutorialSkill = GameObject.FindGameObjectWithTag("invincibleSkill");
                 break;
         }
@@ -182,12 +194,12 @@ public class StageMovement : MonoBehaviour
         sizeMesh = gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<Renderer>().bounds.size.z;           
         progressImageSize = ProgressImage.GetComponent<RectTransform>().rect.width;
         heartStartPos = heartImage.transform.localPosition.x;
-      }
+        }
         startingPos = -sizeMesh;
         //Instantiate x floor
         for (int i = 0; i < N_ofmaps -1; i++)
         {
-            InstantiateStage(stagePrefab, ref startingPos);
+            InstantiateStage(tutorial ? tutorialprefab : stagePrefab, ref startingPos);
             sizeWholeMap += sizeMesh;
 
         }

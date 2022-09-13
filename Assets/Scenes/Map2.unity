@@ -1906,6 +1906,10 @@ MonoBehaviour:
   Player: {fileID: 1467255851}
   tutorial: 1
   spawnTutorialAttack: 0
+  tutorialprefab: {fileID: 5863259032251232336, guid: 4569b9bcd481c35438262862acf8fa80,
+    type: 3}
+  TimingTutorialAttack: 2
+  DurationAfterSkill: 0
   unlockedSkill: 0
 --- !u!1 &1809339345
 GameObject:
@@ -3505,6 +3509,7 @@ MonoBehaviour:
   stagemov: {fileID: 1797974888}
   is_incremental: 1
   difficulty: 0.2
+  startingFreeTime: 0
 --- !u!4 &8374969200797273743
 Transform:
   m_ObjectHideFlags: 0

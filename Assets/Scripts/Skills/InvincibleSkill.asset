@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: InvincibleSkill
   m_EditorClassIdentifier: 
   cooldownTime: 10
-  cooldown: 10
+  cooldown: 1.8712089
   name: invincibility
   duration: 0
   duration_cooldown: 0
   active: 0
   tag: invincibleSkill
   is_instant: 1
-  button: 2
+  button: 3

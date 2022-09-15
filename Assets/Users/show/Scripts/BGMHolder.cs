@@ -26,18 +26,24 @@ public class BGMHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (RetryButton.IsActive() == true && isStopped == false)
-        {
-            audioClip = audioSource.clip;
-            audioSource.Stop();
-            isStopped = true;
-        }
+        StartCoroutine(BGMHold());
     }
 
    public void PlayBGM()
     {
         Debug.Log(audioClip.name);
         StartCoroutine(ReplayBGM());
+    }
+
+    IEnumerator BGMHold()
+    {
+        yield return new WaitForSeconds(3f);
+        if (RetryButton.IsActive() == true && isStopped == false)
+        {
+            audioClip = audioSource.clip;
+            audioSource.Stop();
+            isStopped = true;
+        }
     }
 
     IEnumerator ReplayBGM()

@@ -18,6 +18,6 @@ MonoBehaviour:
   precision: 1.5
   alertOutline: {fileID: 5072228797817445932, guid: 0ef0d95c697c03b47b0a7fc510199399,
     type: 3}
-  AttackPrefab: {fileID: 7720903389827404128, guid: 8d783c7ff069afd47ac7550ce35b495d,
+  AttackPrefab: {fileID: 7109802202725999950, guid: 986c8abbd17f10344a20a722dfb80a27,
     type: 3}
   showAlert: 1

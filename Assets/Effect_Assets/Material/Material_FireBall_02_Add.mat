@@ -23,7 +23,8 @@ Material:
   m_Name: Material_FireBall_02_Add
   m_Shader: {fileID: 4800000, guid: 1bc5c6a70411243779ce486a98012125, type: 3}
   m_ShaderKeywords: _ALPHA_TRANSITION_MAP_MODE_2D _BASE_MAP_MODE_2D _EMISSION_AREA_ALL
-    _EMISSION_COLOR_BASECOLOR _EMISSION_MAP_MODE_2D _TINT_COLOR_ENABLED
+    _EMISSION_COLOR_BASECOLOR _EMISSION_MAP_MODE_2D _SOFT_PARTICLES_ENABLED _TINT_AREA_ALL
+    _TINT_COLOR_ENABLED _TRANSPARENCY_BY_RIM
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -179,7 +180,7 @@ Material:
     - _DstBlend: 0
     - _EmissionAreaType: 1
     - _EmissionColorType: 1
-    - _EmissionIntensity: 4
+    - _EmissionIntensity: 0.5
     - _EmissionIntensityCoord: 0
     - _EmissionMapChannelsX: 0
     - _EmissionMapMode: 0
@@ -214,19 +215,19 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RenderType: 2
-    - _RimTransparencyEnabled: 0
-    - _RimTransparencyProgress: 0.5
+    - _RimTransparencyEnabled: 1
+    - _RimTransparencyProgress: 0.21
     - _RimTransparencyProgressCoord: 0
-    - _RimTransparencySharpness: 0.5
+    - _RimTransparencySharpness: 0
     - _RimTransparencySharpnessCoord: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SoftParticlesEnabled: 0
-    - _SoftParticlesIntensity: 1
+    - _SoftParticlesEnabled: 1
+    - _SoftParticlesIntensity: 3
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TintAreaMode: 0
+    - _TintAreaMode: 1
     - _TintBlendRate: 1
     - _TintBlendRateCoord: 0
     - _TintColorMode: 0

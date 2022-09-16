@@ -6489,6 +6489,7 @@ MonoBehaviour:
   player: {fileID: 642389522}
   player2: {fileID: 4530826500731134853}
   particles: {fileID: 345988403}
+  entrance: 0
 --- !u!4 &619546422
 Transform:
   m_ObjectHideFlags: 0
@@ -6611,6 +6612,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 1c301e09-7fa9-4bb8-a743-c0419da9aded
     m_ActionName: Player/cheat[/DualShock4GamepadHID/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 121072a0-6a87-4f6a-b89d-e72176d6780e
+    m_ActionName: Player/Look2[/DualShock4GamepadHID/rightStick,/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -6668,6 +6673,13 @@ MonoBehaviour:
   rotationSpeed: 15
   canMove: 1
   anim: {fileID: 1210247101}
+  entranceTutorial: 0
+  tutorialCheck1: {fileID: 0}
+  tutorialCheck2: {fileID: 0}
+  camera: {fileID: 0}
+  tutorialAnim: {fileID: 0}
+  movAnimationFinish: 0
+  camAnimationFinish: 0
 --- !u!1 &663400669
 GameObject:
   m_ObjectHideFlags: 3
@@ -7549,7 +7561,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
-  m_LocalRotation: {x: 0.14148696, y: 0.000000019795701, z: -0.0000000026140936, w: 0.9899401}
+  m_LocalRotation: {x: 0.14148696, y: -0.000000019047366, z: 0.000000002720622, w: 0.9899401}
   m_LocalPosition: {x: -4.7780004, y: 1.8787725, z: -6.4690533}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9140,7 +9152,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681819252}
-  m_LocalRotation: {x: 0.14148693, y: 0.000000019043794, z: -0.0000000027218292, w: 0.98994017}
+  m_LocalRotation: {x: 0.14148693, y: -0.000000019043794, z: 0.0000000027218292, w: 0.98994017}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9363,7 +9375,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1701989012}
-  m_LocalRotation: {x: 0.123504676, y: -8.3695e-10, z: 1.0416531e-10, w: 0.992344}
+  m_LocalRotation: {x: 0.12350467, y: 0.000000032238557, z: -0.0000000040123305, w: 0.992344}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9536,8 +9548,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ff97b9f1c640f3c45a9e2f09806a1564, type: 2}
-  m_sharedMaterial: {fileID: 7090896926845805969, guid: ff97b9f1c640f3c45a9e2f09806a1564,
+  m_fontAsset: {fileID: 11400000, guid: 62a3faae35ec0104ba4b71fb59a35d16, type: 2}
+  m_sharedMaterial: {fileID: -2346566371430235374, guid: 62a3faae35ec0104ba4b71fb59a35d16,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -12114,6 +12126,13 @@ MonoBehaviour:
   rotationSpeed: 15
   canMove: 1
   anim: {fileID: 1843636360}
+  entranceTutorial: 0
+  tutorialCheck1: {fileID: 0}
+  tutorialCheck2: {fileID: 0}
+  camera: {fileID: 0}
+  tutorialAnim: {fileID: 0}
+  movAnimationFinish: 0
+  camAnimationFinish: 0
 --- !u!4 &4626945017085406414
 Transform:
   m_ObjectHideFlags: 0

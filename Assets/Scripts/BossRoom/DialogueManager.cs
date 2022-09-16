@@ -28,10 +28,16 @@ public class DialogueManager : MonoBehaviour
     public GameObject player2;
     public ParticleSystem particles;
 
+    public bool entrance = false;
+
 
     void Start()
     {
         sentences = new Queue<string>();
+        if(entrance )
+        {
+            director.Play();
+        }
         
     }
 
@@ -115,7 +121,15 @@ public class DialogueManager : MonoBehaviour
         camera1.VirtualCameraGameObject.SetActive(true);
         camera2.VirtualCameraGameObject.SetActive(true);
         camera3.VirtualCameraGameObject.SetActive(true);
-        director.Play();
+        if(entrance)
+        {
+            director.Resume();
+        }
+        else
+        {
+            director.Play();
+        }
+        
         fadeInOutAnimator.SetTrigger("out");
         
         //conversationButton.SetActive(true);
@@ -132,5 +146,10 @@ public class DialogueManager : MonoBehaviour
         yield return new WaitForSeconds(6.5f);
 
         movement2.canMove = true;
+    }
+
+    public void stop()
+    {
+        director.Pause();    
     }
 }

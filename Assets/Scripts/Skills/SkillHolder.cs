@@ -21,6 +21,7 @@ public class SkillHolder : MonoBehaviour
     private Skill activatedSkill;
     public bool canUseSkills = true;
     public Sprite[] SkillUiSprites;
+    public ParticleSystem healEffect;
     private void Awake()
     {
         playerinter = GetComponent<PlayerInteraction>();
@@ -127,6 +128,8 @@ public class SkillHolder : MonoBehaviour
                 activatedSkill.Activate(this.gameObject);
                 activatedSkill.active = true;
                 activatedSkill.cooldown = 0;
+                    healEffect.Play();
+
                 pressButton = pressedButton.NULL;
 
                 img.GetComponent<Image>().sprite = SkillUiSprites[1];

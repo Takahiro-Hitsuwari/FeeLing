@@ -98,6 +98,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look2"",
+                    ""type"": ""Value"",
+                    ""id"": ""121072a0-6a87-4f6a-b89d-e72176d6780e"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -254,6 +263,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""cheat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d87afaa8-3a1f-4542-8657-c78c875cf029"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a55de62-965c-4708-b7ce-3e9fb21eedee"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7213723-e382-48de-a625-7e71d57e48de"",
+                    ""path"": ""<Joystick>/{Hatswitch}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -270,6 +312,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Dialogue = m_Player.FindAction("Dialogue", throwIfNotFound: true);
         m_Player_Retry = m_Player.FindAction("Retry", throwIfNotFound: true);
         m_Player_cheat = m_Player.FindAction("cheat", throwIfNotFound: true);
+        m_Player_Look2 = m_Player.FindAction("Look2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,6 +380,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dialogue;
     private readonly InputAction m_Player_Retry;
     private readonly InputAction m_Player_cheat;
+    private readonly InputAction m_Player_Look2;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -349,6 +393,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Dialogue => m_Wrapper.m_Player_Dialogue;
         public InputAction @Retry => m_Wrapper.m_Player_Retry;
         public InputAction @cheat => m_Wrapper.m_Player_cheat;
+        public InputAction @Look2 => m_Wrapper.m_Player_Look2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,6 +427,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @cheat.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
                 @cheat.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
                 @cheat.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCheat;
+                @Look2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook2;
+                @Look2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook2;
+                @Look2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLook2;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -410,6 +458,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @cheat.started += instance.OnCheat;
                 @cheat.performed += instance.OnCheat;
                 @cheat.canceled += instance.OnCheat;
+                @Look2.started += instance.OnLook2;
+                @Look2.performed += instance.OnLook2;
+                @Look2.canceled += instance.OnLook2;
             }
         }
     }
@@ -424,5 +475,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnDialogue(InputAction.CallbackContext context);
         void OnRetry(InputAction.CallbackContext context);
         void OnCheat(InputAction.CallbackContext context);
+        void OnLook2(InputAction.CallbackContext context);
     }
 }

@@ -124,6 +124,102 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &228713773
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1467255854}
+    m_Modifications:
+    - target: {fileID: 1178623694890372042, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411182, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_Name
+      value: eff_heal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411184, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.534
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.468
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178623696261302121, guid: c85ed4428ee512342be3b70737945145,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c85ed4428ee512342be3b70737945145, type: 3}
+--- !u!198 &228713774 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1178623696241411184, guid: c85ed4428ee512342be3b70737945145,
+    type: 3}
+  m_PrefabInstance: {fileID: 228713773}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &228713775 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1178623696241411187, guid: c85ed4428ee512342be3b70737945145,
+    type: 3}
+  m_PrefabInstance: {fileID: 228713773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238440866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1892,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1c301e09-7fa9-4bb8-a743-c0419da9aded
     m_ActionName: Player/cheat[/XInputControllerWindows/rightStickPress,/XInputControllerWindows1/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 121072a0-6a87-4f6a-b89d-e72176d6780e
+    m_ActionName: Player/Look2[/DualShock4GamepadHID/rightStick,/Mouse/delta]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1835,6 +1935,7 @@ Transform:
   - {fileID: 927476044}
   - {fileID: 827388305}
   - {fileID: 549038954}
+  - {fileID: 228713775}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1930,6 +2031,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 339ac737b21212b49bc2e00f036e1f82, type: 3}
   - {fileID: 21300000, guid: f04ad4496eb17da419dffef50d034e61, type: 3}
   - {fileID: 21300000, guid: 69d0495e887c6de479b0fefbd705fa52, type: 3}
+  healEffect: {fileID: 228713774}
 --- !u!135 &1467255860
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2174,6 +2276,8 @@ MonoBehaviour:
   spawnTutorialAttack: 0
   tutorialprefab: {fileID: 5955474271707679698, guid: 10264ce392249364cb47b9da2b76e5ff,
     type: 3}
+  canMoveWhenTutorial: 0
+  skilnum: 0
   TimingTutorialAttack: 2
   DurationAfterSkill: 0
   unlockedSkill: 1

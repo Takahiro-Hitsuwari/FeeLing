@@ -106,7 +106,20 @@ public class SkillHolder : MonoBehaviour
             else if(s.button.ToString() == pressButton.ToString() && s.button != Skill.Button.NULL)
             {
                 activatedSkill = s;
-                if(GameObject.Find("MapParent").GetComponent<StageMovement>().tutorial && (int)s.button == GameObject.Find("MapParent").GetComponent<StageMovement>().skilnum)
+                if(s.tag == "HealSkill")
+                {
+                    healEffect.Play();
+                }
+                else if(s.tag == "Impulse")
+                {
+
+                }
+                else if (s.tag == "invincibleSkill")
+                {
+
+                }
+
+                if (GameObject.Find("MapParent").GetComponent<StageMovement>().tutorial && (int)s.button == GameObject.Find("MapParent").GetComponent<StageMovement>().skilnum)
                 {
                     StartCoroutine(GameObject.Find("MapParent").GetComponent<StageMovement>().TutorialCompleted());
                 }
@@ -128,7 +141,7 @@ public class SkillHolder : MonoBehaviour
                 activatedSkill.Activate(this.gameObject);
                 activatedSkill.active = true;
                 activatedSkill.cooldown = 0;
-                    healEffect.Play();
+                 
 
                 pressButton = pressedButton.NULL;
 
